@@ -1,2 +1,2 @@
 # gtm-event-tracker
-Type safe, reusable, flexible and light tracker for triggering Google Tag Manager track events.
+A type-safe, reusable, and flexible way for triggering Google Tag Manager track events.
