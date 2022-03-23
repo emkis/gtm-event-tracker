@@ -25,6 +25,7 @@ jobs:
         run: yarn lint
 
   tests:
+    if: ${{ false }}
     runs-on: ubuntu-latest
 
     strategy:
