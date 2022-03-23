@@ -9,7 +9,12 @@
   "license": "MIT",
   "version": "0.0.1",
   "description": "A type-safe, reusable, and flexible way for triggering Google Tag Manager track events.",
-  "keywords": ["gtm", "tracking", "google-tag-manager", "analytics"],
+  "keywords": [
+    "gtm",
+    "tracking",
+    "google-tag-manager",
+    "analytics"
+  ],
   "main": "dist/index.js",
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": "git@github.com:emkis/gtm-event-tracker.git",
@@ -30,6 +35,8 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@microsoft/api-extractor": "^7.19.5",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
