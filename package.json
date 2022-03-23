@@ -8,6 +8,7 @@
   "license": "MIT",
   "version": "0.0.1",
   "description": "A type-safe, reusable, and flexible way for triggering Google Tag Manager track events.",
+  "keywords": ["gtm", "tracking", "google-tag-manager", "analytics"],
   "main": "dist/index.js",
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": "git@github.com:emkis/gtm-event-tracker.git",
