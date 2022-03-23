@@ -1,11 +1,6 @@
 {
   "name": "gtm-event-tracker",
   "author": "Nicolas Jardim",
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "license": "MIT",
   "version": "0.0.1",
   "description": "A type-safe, reusable, and flexible way for triggering Google Tag Manager track events.",
