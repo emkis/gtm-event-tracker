@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "commonjs",
+    "sourceMap": true,
+    "declaration": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "outDir": "dist",
+    "composite": true,
+    "stripInternal": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mocks/*": ["./src/__mocks__/*"]
+    },
+    "types": [
+      "jest",
+      "node"
+    ],
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    "dist",
+    "build"
+  ]
+}

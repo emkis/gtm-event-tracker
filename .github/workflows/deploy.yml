@@ -1,0 +1,36 @@
+name: Release package on NPM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    if: ${{ false }} # I need to remove this when deploys is necessary
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.14.0]
+    steps:
+      - name: 'Git Checkout'
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Release
+        run: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.NPM_PACKAGE }}
