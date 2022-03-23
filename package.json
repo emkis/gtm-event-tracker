@@ -1,5 +1,6 @@
 {
   "name": "gtm-event-tracker",
+  "author": "Nicolas Jardim",
   "release": {
     "branches": [
       "main"
