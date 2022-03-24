@@ -2,8 +2,7 @@ module.exports = {
   branches: ['main'],
   plugins: [
     [
-      '@semantic-release/commit-analyzer',
-      {
+      '@semantic-release/commit-analyzer', {
         preset: 'angular',
         releaseRules: [
           { type: 'docs', release: 'patch' },
@@ -20,13 +19,16 @@ module.exports = {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     [
-      '@semantic-release/git',
-      {
+      '@semantic-release/git', {
         assets: ['package.json', 'CHANGELOG.md'],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       }
     ],
-    '@semantic-release/npm'
+    [
+      '@semantic-release/npm', {
+        npmPublish: true
+      }
+    ]
   ],
 }
