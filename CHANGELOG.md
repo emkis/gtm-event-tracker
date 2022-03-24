@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/emkis/gtm-event-tracker/compare/v1.0.0...v1.1.0) (2022-03-24)
+
+
+### Features
+
+* enable npm publishing ([9759df9](https://github.com/emkis/gtm-event-tracker/commit/9759df91b82927954116a560115833706fa9e1ac))
+
 # 1.0.0 (2022-03-23)
 
 
