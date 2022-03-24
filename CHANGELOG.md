@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/emkis/gtm-event-tracker/compare/v1.1.0...v1.1.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* improve the release commit note ([278bc64](https://github.com/emkis/gtm-event-tracker/commit/278bc64c1a1aba5018f84fa04356326a05cd27d1))
+
 # [1.1.0](https://github.com/emkis/gtm-event-tracker/compare/v1.0.0...v1.1.0) (2022-03-24)
 
 
