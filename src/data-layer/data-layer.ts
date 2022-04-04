@@ -1,3 +1,8 @@
+import {
+  throwIsNotArray,
+  throwIsNotDefined,
+  throwIsServer,
+} from './data-layer-error'
 import type { EventProperties, DataLayerModule } from './data-layer-types'
 
 /**
@@ -12,21 +17,11 @@ export function createDataLayerModule(): DataLayerModule {
   function assertIsAvailable() {
     const isServer = typeof window === 'undefined'
     const isDefined = typeof window.dataLayer !== 'undefined'
-    const isArray = !Array.isArray(window.dataLayer)
+    const isArray = Array.isArray(window.dataLayer)
 
-    if (!isServer) {
-      throw new Error(
-        'GTM Event Tracker: window.dataLayer is not available on server-side.'
-      )
-    }
-
-    if (!isDefined) {
-      throw new Error('GTM Event Tracker: window.dataLayer is not defined')
-    }
-
-    if (!isArray) {
-      throw new Error('GTM Event Tracker: window.dataLayer is not an array')
-    }
+    if (isServer) throwIsServer()
+    else if (!isDefined) throwIsNotDefined()
+    else if (!isArray) throwIsNotArray()
   }
 
   return {
