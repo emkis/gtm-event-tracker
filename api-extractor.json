@@ -32,13 +32,19 @@
         "logLevel": "warning"
       },
       "ae-forgotten-export": {
-        "logLevel": "none",
+        "logLevel": "warning",
         "addToApiReportFile": false
       }
     },
     "tsdocMessageReporting": {
       "default": {
         "logLevel": "warning"
+      },
+      "tsdoc-escape-right-brace": {
+        "logLevel": "none"
+      },
+      "tsdoc-malformed-inline-tag": {
+        "logLevel": "none"
       }
     }
   }

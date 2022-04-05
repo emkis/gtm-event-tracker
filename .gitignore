@@ -1,5 +1,9 @@
 # Build
 dist
+temp
+
+# Verdaccio
+storage
 
 # Logs
 logs

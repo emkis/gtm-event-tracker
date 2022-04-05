@@ -1,8 +1,12 @@
+/** @type {import('semantic-release').GlobalConfig} */
+/* eslint-disable no-template-curly-in-string */
+
 module.exports = {
   branches: ['main'],
   plugins: [
     [
-      '@semantic-release/commit-analyzer', {
+      '@semantic-release/commit-analyzer',
+      {
         preset: 'angular',
         releaseRules: [
           { type: 'docs', release: 'patch' },
@@ -19,15 +23,16 @@ module.exports = {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     [
-      '@semantic-release/git', {
-        assets: ['package.json', 'CHANGELOG.md'],
+      '@semantic-release/git',
+      {
         message: 'chore(release): v${nextRelease.version}',
-      }
+      },
     ],
     [
-      '@semantic-release/npm', {
-        npmPublish: true
-      }
-    ]
+      '@semantic-release/npm',
+      {
+        npmPublish: true,
+      },
+    ],
   ],
 }

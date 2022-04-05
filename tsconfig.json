@@ -16,7 +16,6 @@
     "moduleResolution": "node",
     "rootDir": "src",
     "outDir": "dist",
-    "composite": true,
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
