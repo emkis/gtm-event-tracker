@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/emkis/gtm-event-tracker/compare/v1.2.1...v1.2.2) (2022-04-05)
+
+
+### Bug Fixes
+
+* add d.ts files to package ([9acb646](https://github.com/emkis/gtm-event-tracker/commit/9acb646d64dbccde1dda566028e6a0d3f8076c3d))
+
 ## [1.2.1](https://github.com/emkis/gtm-event-tracker/compare/v1.2.0...v1.2.1) (2022-04-05)
 
 
