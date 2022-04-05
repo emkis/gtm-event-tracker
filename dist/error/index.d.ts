@@ -1,1 +1,0 @@
-export { WarningError } from './error';
