@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/emkis/gtm-event-tracker/compare/v1.2.2...v1.2.3) (2022-04-05)
+
+
+### Bug Fixes
+
+* **action:** add missing step on deploy ([152398c](https://github.com/emkis/gtm-event-tracker/commit/152398c4d62fe4661b6fa11106411bb343e0a16f))
+
 ## [1.2.2](https://github.com/emkis/gtm-event-tracker/compare/v1.2.1...v1.2.2) (2022-04-05)
 
 
