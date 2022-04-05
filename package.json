@@ -13,6 +13,9 @@
   "main": "dist/index.js",
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": "git@github.com:emkis/gtm-event-tracker.git",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "husky install",
     "clean": "rimraf dist temp *.tsbuildinfo",
