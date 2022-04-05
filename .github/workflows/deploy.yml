@@ -29,6 +29,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Produce declaration files
+        run: yarn api-report
+
       - name: Release
         run: yarn release
         env:
