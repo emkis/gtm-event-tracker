@@ -14,7 +14,8 @@
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": "git@github.com:emkis/gtm-event-tracker.git",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "prepare": "husky install",
