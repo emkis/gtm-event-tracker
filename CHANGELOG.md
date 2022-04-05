@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/emkis/gtm-event-tracker/compare/v1.2.0...v1.2.1) (2022-04-05)
+
+
+### Bug Fixes
+
+* add missing files pattern ([26af74d](https://github.com/emkis/gtm-event-tracker/commit/26af74df06c5cccae75d8ba511b63f5b735fc240))
+
 # [1.2.0](https://github.com/emkis/gtm-event-tracker/compare/v1.1.2...v1.2.0) (2022-04-05)
 
 
