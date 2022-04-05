@@ -1,3 +1,21 @@
+# [1.2.0](https://github.com/emkis/gtm-event-tracker/compare/v1.1.2...v1.2.0) (2022-04-05)
+
+
+### Bug Fixes
+
+* make sure that environment dont break ([0ff8162](https://github.com/emkis/gtm-event-tracker/commit/0ff81628782f6bef9d22f53cab23f0eaf8514f55))
+
+
+### Features
+
+* add data layer module ([6c4938c](https://github.com/emkis/gtm-event-tracker/commit/6c4938c6c9f6782cdc854ae70f59929f15b1c41d))
+* add datalayer errors ([2895be6](https://github.com/emkis/gtm-event-tracker/commit/2895be68712185652c38229be804b81b166dc331))
+* add error module ([17a6d9f](https://github.com/emkis/gtm-event-tracker/commit/17a6d9f04ce6841340e653acd8ffb09c1c638580))
+* add global types ([7de5493](https://github.com/emkis/gtm-event-tracker/commit/7de549383f92ad4bc9185998e3d372fb494280a4))
+* add tracker context ([22735ef](https://github.com/emkis/gtm-event-tracker/commit/22735ef1b7922ccc073a5853eaecd3503273e517))
+* add with-tracker ([0e178c3](https://github.com/emkis/gtm-event-tracker/commit/0e178c334b7f36df82ab628d5adce0159626bb47))
+* export features ([f9d443b](https://github.com/emkis/gtm-event-tracker/commit/f9d443b75b28780d5e122ed0ae9ccc73318feab7))
+
 ## [1.1.2](https://github.com/emkis/gtm-event-tracker/compare/v1.1.1...v1.1.2) (2022-03-26)
 
 ## [1.1.1](https://github.com/emkis/gtm-event-tracker/compare/v1.1.0...v1.1.1) (2022-03-24)
