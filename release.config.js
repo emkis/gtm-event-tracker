@@ -2,7 +2,7 @@
 /* eslint-disable no-template-curly-in-string */
 
 module.exports = {
-  branches: ['main'],
+  branches: ['main', 'next', { name: 'beta', prerelease: true }],
   plugins: [
     [
       '@semantic-release/commit-analyzer',
