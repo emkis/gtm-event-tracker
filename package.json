@@ -20,7 +20,7 @@
   "scripts": {
     "prepare": "husky install",
     "clean": "rimraf dist temp *.tsbuildinfo",
-    "dev": "yarn build --watch --preserveWatchOutput",
+    "dev": "npm-run-all 'build:ts --watch --preserveWatchOutput'",
     "build": "npm-run-all clean build:ts",
     "build:ts": "tsc --project tsconfig.build.json",
     "lint": "eslint src --ext js,ts --fix",
