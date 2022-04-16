@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.14.0]
+        node-version: [16.14.2]
     steps:
       - name: 'Git Checkout'
         uses: actions/checkout@v2

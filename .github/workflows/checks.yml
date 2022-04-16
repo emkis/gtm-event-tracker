@@ -6,11 +6,12 @@ on:
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.14.0]
+        node-version: [16.14.2]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -25,11 +26,12 @@ jobs:
         run: yarn lint
 
   tests:
+    name: Tests
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.14.0]
+        node-version: [16.14.2]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
