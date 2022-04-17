@@ -24,11 +24,3 @@ export type DataLayerModule = Readonly<{
    */
   assertIsAvailable: () => void
 }>
-
-/**
- * Options for customizing the Data Layer module.
- * @internal
- */
-export type DataLayerModuleOptions = {
-  debug?: boolean
-}
