@@ -6,7 +6,7 @@ export type EventProperties = Record<string, string | number>
 
 /**
  * The type-safe and recommended way for you to interact with `window.dataLayer`.
- * @public
+ * @internal
  */
 export type DataLayerModule = Readonly<{
   /**
