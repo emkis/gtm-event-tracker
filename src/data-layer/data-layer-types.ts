@@ -11,7 +11,6 @@ export type EventProperties = Record<string, string | number>
 export type DataLayerModule = Readonly<{
   /**
    * Pushes an event to `window.dataLayer`.
-   * @public
    */
   addEvent: (payload: EventProperties) => void
 
@@ -20,7 +19,6 @@ export type DataLayerModule = Readonly<{
    *
    * This array is injected in the `window` by Google Tag Manager, so you
    * just need to have this dependency installed correctly.
-   * @public
    */
   assertIsAvailable: () => void
 }>

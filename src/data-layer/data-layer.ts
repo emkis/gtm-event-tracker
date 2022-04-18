@@ -5,10 +5,6 @@ import {
 } from './data-layer-error'
 import type { EventProperties, DataLayerModule } from './data-layer-types'
 
-/**
- * Create the Data Layer module.
- * @internal
- */
 export function createDataLayerModule(): DataLayerModule {
   function addEvent(payload: EventProperties) {
     window.dataLayer.push(payload)
