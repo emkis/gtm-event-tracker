@@ -1,4 +1,5 @@
 import { createTrackerContext } from './tracker-context'
+import { TrackerContextOptions } from './tracker-context-types'
 
 it('should create context without error', () => {
   expect(() => {
@@ -10,13 +11,28 @@ it('should create context without error', () => {
   }).not.toThrow()
 })
 
-it('should initialize context with expected properties', () => {
+it('should create context with correct defaults', () => {
+  const trackContext = createTrackerContext()
+  const emptyObject = {}
+
+  expect(trackContext).toStrictEqual({
+    context: {
+      value: emptyObject,
+      options: emptyObject,
+    },
+    setProps: expect.any(Function),
+  })
+})
+
+it('should create context with expected properties', () => {
   const contextProperties = { appName: 'sit-dolor', hi: 'bye' }
-  const trackContext = createTrackerContext(contextProperties)
+  const contextOptions: TrackerContextOptions = { name: 'lorem ipsum' }
+  const trackContext = createTrackerContext(contextProperties, contextOptions)
 
   expect(trackContext).toStrictEqual({
     context: {
       value: contextProperties,
+      options: contextOptions,
     },
     setProps: expect.any(Function),
   })
@@ -29,5 +45,6 @@ it('should update context properties', () => {
 
   const updatedContextProps = { appName: 'amet-niat', customerId: 'ju-4d-da' }
   trackContext.setProps(updatedContextProps)
+  expect(initialContextProps).not.toEqual(updatedContextProps)
   expect(trackContext.context.value).toStrictEqual(updatedContextProps)
 })

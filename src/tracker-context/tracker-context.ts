@@ -1,5 +1,8 @@
 import type { EventProperties } from '../data-layer'
-import type { TrackerContext } from './tracker-context-types'
+import type {
+  TrackerContext,
+  TrackerContextOptions,
+} from './tracker-context-types'
 
 /**
  * Creates a context for track events.
@@ -8,6 +11,7 @@ import type { TrackerContext } from './tracker-context-types'
  * track event that uses this context.
  *
  * @param initialProps - Properties witch will initialize the context.
+ * @param options - Options for customizing the Tracker Context.
  * @public
  * @example
  * createTrackerContext({
@@ -17,9 +21,13 @@ import type { TrackerContext } from './tracker-context-types'
  * })
  */
 export function createTrackerContext(
-  initialProps: EventProperties = {}
+  initialProps: EventProperties = {},
+  options: TrackerContextOptions = {}
 ): TrackerContext {
-  const context = { value: { ...initialProps } }
+  const context = {
+    options,
+    value: { ...initialProps },
+  }
 
   function setProps(props: EventProperties) {
     context.value = { ...props }

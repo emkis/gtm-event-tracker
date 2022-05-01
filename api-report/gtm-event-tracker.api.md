@@ -5,7 +5,7 @@
 ```ts
 
 // @public
-export function createTrackerContext(initialProps?: EventProperties): TrackerContext;
+export function createTrackerContext(initialProps?: EventProperties, options?: TrackerContextOptions): TrackerContext;
 
 // @public
 export type EventProperties = Record<string, string | number>;
@@ -17,6 +17,12 @@ export type SubtractEventProperties<OriginalProps, PropsToSubtract> = Omit<Origi
 export type TrackerContext = Readonly<{
     setProps: (props: EventProperties) => void;
 }>;
+
+// @public
+export type TrackerContextOptions = {
+    debug?: boolean;
+    name?: string;
+};
 
 // @public
 export type TrackModule<CustomEventProperties extends EventProperties> = {
