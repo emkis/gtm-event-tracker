@@ -3,9 +3,9 @@ import {
   throwIsNotDefined,
   throwIsServer,
 } from './data-layer-error'
-import type { EventProperties, DataLayerModule } from './data-layer-types'
+import type { EventProperties, DataLayerFunctions } from './data-layer-types'
 
-export function createDataLayerModule(): DataLayerModule {
+export function createDataLayerModule(): DataLayerFunctions {
   function addEvent(payload: EventProperties) {
     window.dataLayer.push(payload)
   }
@@ -26,4 +26,4 @@ export function createDataLayerModule(): DataLayerModule {
   }
 }
 
-export const dataLayer: DataLayerModule = createDataLayerModule()
+export const dataLayer: DataLayerFunctions = createDataLayerModule()

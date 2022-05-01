@@ -8,7 +8,7 @@ export type EventProperties = Record<string, string | number>
  * The type-safe and recommended way to interact with `window.dataLayer`.
  * @internal
  */
-export type DataLayerModule = Readonly<{
+export type DataLayerFunctions = Readonly<{
   /**
    * Pushes an event to `window.dataLayer`.
    */
