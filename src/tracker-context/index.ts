@@ -1,2 +1,5 @@
 export { createTrackerContext } from './tracker-context'
-export type { TrackerContext } from './tracker-context-types'
+export type {
+  TrackerContext,
+  TrackerContextOptions,
+} from './tracker-context-types'
