@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/emkis/gtm-event-tracker/compare/v1.2.4...v1.3.0) (2022-05-01)
+
+
+### Features
+
+* export tracker context options ([f092e3b](https://github.com/emkis/gtm-event-tracker/commit/f092e3bab0fce0c6e9fbe6e4c18cf9cbb08ab53e))
+* **tracker-context:** add context options ([65b2dd5](https://github.com/emkis/gtm-event-tracker/commit/65b2dd5519ef2a767db1618d3b9e122dd91e42bf))
+* **tracker-context:** add new types and docs ([b270b74](https://github.com/emkis/gtm-event-tracker/commit/b270b74d2d798f1dd01bd0d5e3974180c4c1d25f))
+
 ## [1.2.4](https://github.com/emkis/gtm-event-tracker/compare/v1.2.3...v1.2.4) (2022-05-01)
 
 ## [1.2.3](https://github.com/emkis/gtm-event-tracker/compare/v1.2.2...v1.2.3) (2022-04-05)
