@@ -11,7 +11,20 @@ it('should create context without error', () => {
   }).not.toThrow()
 })
 
-it('should initialize context with expected properties', () => {
+it('should create context with correct defaults', () => {
+  const trackContext = createTrackerContext()
+  const emptyObject = {}
+
+  expect(trackContext).toStrictEqual({
+    context: {
+      value: emptyObject,
+      options: emptyObject,
+    },
+    setProps: expect.any(Function),
+  })
+})
+
+it('should create context with expected properties', () => {
   const contextProperties = { appName: 'sit-dolor', hi: 'bye' }
   const contextOptions: TrackerContextOptions = { name: 'lorem ipsum' }
   const trackContext = createTrackerContext(contextProperties, contextOptions)
