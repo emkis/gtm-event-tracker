@@ -1,4 +1,5 @@
 import { createTrackerContext } from './tracker-context'
+import { TrackerContextOptions } from './tracker-context-types'
 
 it('should create context without error', () => {
   expect(() => {
@@ -12,11 +13,13 @@ it('should create context without error', () => {
 
 it('should initialize context with expected properties', () => {
   const contextProperties = { appName: 'sit-dolor', hi: 'bye' }
-  const trackContext = createTrackerContext(contextProperties)
+  const contextOptions: TrackerContextOptions = { name: 'lorem ipsum' }
+  const trackContext = createTrackerContext(contextProperties, contextOptions)
 
   expect(trackContext).toStrictEqual({
     context: {
       value: contextProperties,
+      options: contextOptions,
     },
     setProps: expect.any(Function),
   })
