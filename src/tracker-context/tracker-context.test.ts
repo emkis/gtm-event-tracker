@@ -32,5 +32,6 @@ it('should update context properties', () => {
 
   const updatedContextProps = { appName: 'amet-niat', customerId: 'ju-4d-da' }
   trackContext.setProps(updatedContextProps)
+  expect(initialContextProps).not.toEqual(updatedContextProps)
   expect(trackContext.context.value).toStrictEqual(updatedContextProps)
 })
