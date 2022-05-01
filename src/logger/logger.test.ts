@@ -1,5 +1,5 @@
-import { createLoggerModule, getLogger } from './logger'
-import type { Logger } from './types'
+import { createLogger, getLogger, defaultLogger } from './logger'
+import type { Logger, LoggerAction } from './types'
 
 function makeMockLogger(): Logger {
   return {
@@ -9,70 +9,70 @@ function makeMockLogger(): Logger {
   }
 }
 
-function makeLoggerModule() {
+function makeLogger({ isLogsEnabled = true } = {}) {
   const mockLogger = makeMockLogger()
   return {
     mockLogger,
-    ...createLoggerModule({ logger: mockLogger }),
+    ...createLogger({ logger: mockLogger, isEnabled: isLogsEnabled }),
   }
 }
 
-it('should create logger module without throwing error', () => {
+it('should create logger without throwing any errors', () => {
   const mockLogger = makeMockLogger()
 
   expect(() => {
-    createLoggerModule({ logger: mockLogger })
+    createLogger({ logger: mockLogger })
+  }).not.toThrow()
+
+  expect(() => {
+    createLogger({ logger: mockLogger, isEnabled: true })
   }).not.toThrow()
 })
 
-it('should initialize logger with default logger', () => {
+it('should not return default logger when logs are disabled', () => {
   const logger = getLogger()
-  expect(logger).toEqual(console)
+  expect(logger).not.toEqual(defaultLogger)
 })
 
-it('should initialize logger module with provided logger', () => {
-  const { mockLogger, getLogger } = makeLoggerModule()
-
+it('should return custom logger witch was provided as the custom logger', () => {
+  const { mockLogger, getLogger } = makeLogger()
   const logger = getLogger()
-  expect(logger).toEqual(mockLogger)
+  expect(logger).toBe(mockLogger)
 })
 
 it('should call logger methods correctly', () => {
-  const { mockLogger, getLogger } = makeLoggerModule()
+  const { mockLogger, getLogger } = makeLogger()
   const logger = getLogger()
 
-  const simpleLog = 'simple log'
-  const customizedLog = ['customized log', { type: 'initialized' }]
-
-  function callAllLogMethods() {
-    const logMethods = [logger.log, logger.warn, logger.error]
-
-    logMethods.forEach((logMethod) => {
-      logMethod(simpleLog)
-      logMethod(...customizedLog)
-    })
+  const simpleLog: LoggerAction = {
+    type: 'context-created',
+    properties: { something: 'random' },
   }
 
-  callAllLogMethods()
+  function callAllLogFunctions() {
+    const logFunctions = [logger.log, logger.warn, logger.error]
+    logFunctions.forEach((logFunction) => logFunction(simpleLog))
+  }
+
+  callAllLogFunctions()
   expect(mockLogger.log).toHaveBeenNthCalledWith(1, simpleLog)
-  expect(mockLogger.log).toHaveBeenNthCalledWith(2, ...customizedLog)
   expect(mockLogger.warn).toHaveBeenNthCalledWith(1, simpleLog)
-  expect(mockLogger.warn).toHaveBeenNthCalledWith(2, ...customizedLog)
   expect(mockLogger.error).toHaveBeenNthCalledWith(1, simpleLog)
-  expect(mockLogger.error).toHaveBeenNthCalledWith(2, ...customizedLog)
 })
 
 it('should set a different logger object', () => {
-  const { getLogger, setLogger } = makeLoggerModule()
+  const { getLogger, setLogger } = makeLogger()
   const initialLogger = getLogger()
 
   const customLogger: Logger = {
-    log: jest.fn(),
-    error: jest.fn(),
-    warn: jest.fn(),
+    log: () => null,
+    error: () => null,
+    warn: () => null,
   }
 
   setLogger(customLogger)
   const modifiedLogger = getLogger()
+
   expect(modifiedLogger).not.toBe(initialLogger)
+  expect(modifiedLogger).toBe(customLogger)
 })
