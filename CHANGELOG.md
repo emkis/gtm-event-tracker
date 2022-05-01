@@ -1,3 +1,5 @@
+## [1.2.4](https://github.com/emkis/gtm-event-tracker/compare/v1.2.3...v1.2.4) (2022-05-01)
+
 ## [1.2.3](https://github.com/emkis/gtm-event-tracker/compare/v1.2.2...v1.2.3) (2022-04-05)
 
 
