@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/emkis/gtm-event-tracker/compare/v1.3.0...v1.4.0) (2022-05-04)
+
+
+### Features
+
+* export logger ([ff832fe](https://github.com/emkis/gtm-event-tracker/commit/ff832fe13a3a6fbe2771453aa6a1679b35e5011c))
+* **logger:** add logger ([401e4bd](https://github.com/emkis/gtm-event-tracker/commit/401e4bd347b6acba0cf5fb67f99e64573c9d6299))
+* **logger:** add logger types and docs ([29d7ca5](https://github.com/emkis/gtm-event-tracker/commit/29d7ca50a4378d70796fd63f487817e22767a030))
+
 # [1.3.0](https://github.com/emkis/gtm-event-tracker/compare/v1.2.4...v1.3.0) (2022-05-01)
 
 
