@@ -1,6 +1,6 @@
 import { dataLayer, EventProperties } from '../data-layer'
+import { logEvent } from './with-tracker-logs'
 import type { TrackerContext } from '../tracker-context'
-
 import type { TrackModule, SubtractEventProperties } from './with-tracker-types'
 
 /**
@@ -29,8 +29,11 @@ export function withTrackerContext<Properties extends EventProperties>({
   context,
 }: TrackerContext): TrackModule<Properties> {
   function trackEvent(eventProps: Properties) {
+    const eventProperties = { ...context.value, ...eventProps }
+
     dataLayer.assertIsAvailable()
-    dataLayer.addEvent({ ...context.value, ...eventProps })
+    dataLayer.addEvent(eventProperties)
+    logEvent(eventProperties)
   }
 
   function setRepeatedProps<T extends Partial<Properties>>(defaultProps: T) {
