@@ -1,3 +1,4 @@
+import { logContextCreated, logContextUpdated } from './tracker-context-logs'
 import type { EventProperties } from '../data-layer'
 import type {
   TrackerContext,
@@ -29,9 +30,34 @@ export function createTrackerContext(
     value: { ...initialProps },
   }
 
-  function setProps(props: EventProperties) {
-    context.value = { ...props }
+  function getProps(): EventProperties {
+    return context.value
   }
 
-  return { context, setProps }
+  function setProps(props: EventProperties) {
+    const updatedProps = { ...props }
+    context.value = updatedProps
+  }
+
+  function handleSetProps(props: EventProperties) {
+    const currentProps = getProps()
+    const newPropsCopy = { ...props }
+
+    logContextUpdated({
+      contextName: context.options.name,
+      currentProps: currentProps,
+      newProps: newPropsCopy,
+    })
+    setProps(newPropsCopy)
+  }
+
+  logContextCreated({
+    contextName: context.options.name,
+    properties: getProps(),
+  })
+
+  return {
+    context,
+    setProps: handleSetProps,
+  }
 }
