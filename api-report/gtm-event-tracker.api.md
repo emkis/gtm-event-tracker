@@ -11,6 +11,31 @@ export function createTrackerContext(initialProps?: EventProperties, options?: T
 export type EventProperties = Record<string, string | number>;
 
 // @public
+export type Logger = {
+    log: (action: LoggerAction) => void;
+    warn: (action: LoggerAction) => void;
+    error: (action: LoggerAction) => void;
+};
+
+// @public
+export type LoggerAction = {
+    type: 'event';
+    properties: EventProperties;
+} | {
+    type: 'context-created';
+    contextName?: string;
+    properties: EventProperties;
+} | {
+    type: 'context-updated';
+    contextName?: string;
+    previousProperties: EventProperties;
+    currentProperties: EventProperties;
+};
+
+// @public
+export const setLogger: (targetLogger: Logger) => void;
+
+// @public
 export type SubtractEventProperties<OriginalProps, PropsToSubtract> = Omit<OriginalProps, keyof PropsToSubtract> & EventProperties;
 
 // @public

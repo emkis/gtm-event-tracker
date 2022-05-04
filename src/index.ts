@@ -11,3 +11,4 @@ export {
 } from './with-tracker'
 
 export type { EventProperties } from './data-layer'
+export { setLogger, Logger, LoggerAction } from './logger'
