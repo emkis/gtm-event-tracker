@@ -1,4 +1,4 @@
-import { EventProperties } from '../data-layer'
+import type { EventProperties } from '../data-layer'
 import { getLogger } from '../logger'
 
 export function logEvent(properties: EventProperties) {
