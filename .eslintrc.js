@@ -22,10 +22,11 @@ module.exports = {
     semi: ['error', 'never'],
     'prettier/prettier': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'arrow-body-style': 'off', // disabled to prevent issue: https://github.com/prettier/eslint-plugin-prettier/issues/65
-    'prefer-arrow-callback': 'off', // disabled to prevent issue: https://github.com/prettier/eslint-plugin-prettier/issues/65
-    '@typescript-eslint/no-unused-vars': 'off', // disabled because TS is handling this
-    '@typescript-eslint/no-unused-params': 'off', // disabled because TS is handling this
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-params': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   overrides: [
     {
