@@ -10,12 +10,12 @@ export type EventProperties = Record<string, string | number>
  */
 export type DataLayerFunctions = Readonly<{
   /**
-   * Pushes an event to `window.dataLayer`.
+   * Pushes an event to the target array.
    */
   addEvent: (payload: EventProperties) => void
 
   /**
-   * Asserts `window.dataLayer` is available.
+   * Asserts if the target array is available.
    *
    * This array is injected in the `window` by Google Tag Manager, so you
    * just need to have this dependency installed correctly.
