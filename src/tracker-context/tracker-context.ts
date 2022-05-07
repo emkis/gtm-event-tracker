@@ -26,7 +26,7 @@ export function createTrackerContext(
   options: TrackerContextOptions = {}
 ): TrackerContext {
   const context = {
-    options,
+    options: { ...options },
     value: { ...initialProps },
   }
 
