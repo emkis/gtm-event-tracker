@@ -23,15 +23,15 @@ module.exports = {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     [
-      '@semantic-release/git',
-      {
-        message: 'chore(release): v${nextRelease.version}',
-      },
-    ],
-    [
       '@semantic-release/npm',
       {
         npmPublish: true,
+      },
+    ],
+    [
+      '@semantic-release/git',
+      {
+        message: 'chore(release): v${nextRelease.version}',
       },
     ],
   ],
