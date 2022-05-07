@@ -1,9 +1,9 @@
 # Build
-dist
-temp
+/dist
+/temp
 
 # Verdaccio
-storage
+/storage
 
 # Logs
 logs
