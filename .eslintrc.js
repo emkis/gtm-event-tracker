@@ -33,4 +33,11 @@ module.exports = {
       env: { jest: true, node: true },
     },
   ],
+  ignorePatterns: [
+    '**/*/node_modules/*',
+    '/dist',
+    '/temp',
+    '/storage',
+    '/examples',
+  ],
 }
