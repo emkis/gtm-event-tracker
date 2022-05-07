@@ -1,3 +1,13 @@
+# [1.5.0](https://github.com/emkis/gtm-event-tracker/compare/v1.4.1...v1.5.0) (2022-05-07)
+
+
+### Features
+
+* **tracker-context:** add log functions ([20408e6](https://github.com/emkis/gtm-event-tracker/commit/20408e6be1acaef92bd0afe80246fd0626e4c1c4))
+* **tracker-context:** trigger logs from context ([1f9d08b](https://github.com/emkis/gtm-event-tracker/commit/1f9d08b19058ce0529c298de0a1f7c2a78fcf09c))
+* **with-tracker:** add log function ([a82b58d](https://github.com/emkis/gtm-event-tracker/commit/a82b58dd1d00d399a5bdd6b9d124424e1549c0d8))
+* **with-tracker:** trigger log on event ([43e44bf](https://github.com/emkis/gtm-event-tracker/commit/43e44bf8258ca1c2b62f903d90a9301b8fcb9f52))
+
 ## [1.4.1](https://github.com/emkis/gtm-event-tracker/compare/v1.4.0...v1.4.1) (2022-05-07)
 
 # [1.4.0](https://github.com/emkis/gtm-event-tracker/compare/v1.3.0...v1.4.0) (2022-05-04)
