@@ -23,7 +23,7 @@
     "dev": "npm-run-all 'build:ts --watch --preserveWatchOutput'",
     "build": "npm-run-all clean build:ts",
     "build:ts": "tsc --project tsconfig.build.json",
-    "lint": "eslint src --ext js,ts --fix",
+    "lint": "eslint . --ext js,ts --fix",
     "test": "npm-run-all test:unit test:api-report",
     "test:unit": "jest",
     "test:api-report": "npm-run-all build api-report",
