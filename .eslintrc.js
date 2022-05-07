@@ -8,9 +8,8 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
+    'plugin:promise/recommended',
     'plugin:prettier/recommended',
-    'prettier',
-    'prettier/prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
