@@ -27,6 +27,13 @@ module.exports = {
     '@typescript-eslint/no-unused-params': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
   },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+    },
+  },
   overrides: [
     {
       files: ['**/*.spec.ts', '**/*.test.ts'],
