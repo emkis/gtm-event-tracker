@@ -21,13 +21,15 @@
     "clean": "rimraf dist temp *.tsbuildinfo",
     "dev": "npm-run-all 'build:ts --watch --preserveWatchOutput'",
     "build": "npm-run-all clean build:ts",
-    "build:ts": "tsc --project tsconfig.build.json",
+    "build:ts": "npm-run-all ts:compile ts:replace-alias",
     "lint": "eslint . --ext js,ts --fix",
     "test": "npm-run-all test:unit test:api-report",
     "test:unit": "jest",
     "test:api-report": "npm-run-all build api-report",
     "test:api-report:update": "npm-run-all build 'api-report --local'",
     "api-report": "api-extractor run",
+    "ts:compile": "tsc --project tsconfig.build.json",
+    "ts:replace-alias": "tsc-alias --project tsconfig.build.json",
     "release": "semantic-release"
   },
   "devDependencies": {
