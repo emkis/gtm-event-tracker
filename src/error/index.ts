@@ -1,1 +1,2 @@
-export { WarningError } from './error'
+export { WarningError } from './warning'
+export { InvalidConfigurationError } from './invalid-configuration'
