@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/emkis/gtm-event-tracker/compare/v1.5.0...v1.6.0) (2022-05-08)
+
+
+### Features
+
+* get target property from function ([990a86d](https://github.com/emkis/gtm-event-tracker/commit/990a86d36eb9317ee895a9f52ffe27f4adbe49a3))
+
 # [1.5.0](https://github.com/emkis/gtm-event-tracker/compare/v1.4.1...v1.5.0) (2022-05-07)
 
 
