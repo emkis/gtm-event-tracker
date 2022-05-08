@@ -5,15 +5,20 @@ import {
 } from './data-layer-error'
 import type { EventProperties, DataLayerFunctions } from './data-layer-types'
 
-export function createDataLayerModule(): DataLayerFunctions {
+export function getDefaultTargetProperty() {
+  return window.dataLayer
+}
+
+export function createDataLayer(): DataLayerFunctions {
   function addEvent(payload: EventProperties) {
-    window.dataLayer.push(payload)
+    const targetProperty = getDefaultTargetProperty()
+    targetProperty.push(payload)
   }
 
   function assertIsAvailable() {
     const isServer = () => typeof window === 'undefined'
-    const isDefined = () => typeof window.dataLayer !== 'undefined'
-    const isArray = () => Array.isArray(window.dataLayer)
+    const isDefined = () => typeof getDefaultTargetProperty() !== 'undefined'
+    const isArray = () => Array.isArray(getDefaultTargetProperty())
 
     if (isServer()) throwIsServer()
     else if (!isDefined()) throwIsNotDefined()
@@ -26,4 +31,4 @@ export function createDataLayerModule(): DataLayerFunctions {
   }
 }
 
-export const dataLayer: DataLayerFunctions = createDataLayerModule()
+export const dataLayer: DataLayerFunctions = createDataLayer()
