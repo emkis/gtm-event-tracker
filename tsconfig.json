@@ -19,8 +19,7 @@
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@mocks/*": ["./src/__mocks__/*"]
+      "@/*": ["src/*"]
     },
     "types": [
       "jest",
