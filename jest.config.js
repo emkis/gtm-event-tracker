@@ -11,6 +11,5 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '@mocks/(.*)$': '<rootDir>/src/__mocks__/$1',
   },
 }
