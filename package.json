@@ -25,6 +25,7 @@
     "lint": "eslint . --ext js,ts --fix",
     "test": "npm-run-all test:unit test:api-report",
     "test:unit": "jest",
+    "test:unit:coverage": "npm-run-all clean 'test:unit --coverage'",
     "test:api-report": "npm-run-all build api-report",
     "test:api-report:update": "npm-run-all build 'api-report --local'",
     "api-report": "api-extractor run",
