@@ -13,7 +13,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   coverageDirectory: '<rootDir>/coverage',
-  coverageReporters: ['html-spa'],
+  coverageReporters: ['html-spa', 'json'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   coveragePathIgnorePatterns: [
     '<rootDir>/node_modules',
