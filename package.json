@@ -30,8 +30,7 @@
     "test:api-report:update": "npm-run-all build 'api-report --local'",
     "api-report": "api-extractor run",
     "ts:compile": "tsc --project tsconfig.build.json",
-    "ts:replace-alias": "tsc-alias --project tsconfig.build.json",
-    "release": "semantic-release"
+    "ts:replace-alias": "tsc-alias --project tsconfig.build.json"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.17.10",
