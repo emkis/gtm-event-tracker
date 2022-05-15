@@ -34,6 +34,9 @@
       "ae-forgotten-export": {
         "logLevel": "warning",
         "addToApiReportFile": false
+      },
+      "ae-wrong-input-file-type": {
+        "logLevel": "none"
       }
     },
     "tsdocMessageReporting": {

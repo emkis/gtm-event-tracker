@@ -10,12 +10,14 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [16.14.2]
+
     steps:
-      - name: 'Git Checkout'
-        uses: actions/checkout@v2
+      - name: Checkout to branch
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
 
@@ -34,7 +36,7 @@ jobs:
         run: yarn api-report
 
       - name: Release
-        run: yarn release
+        run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

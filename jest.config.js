@@ -8,8 +8,16 @@ module.exports = {
     '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test|tests).[jt]s?(x)',
   ],
-  modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
+  modulePathIgnorePatterns: ['<rootDir>/dist', '<rootDir>/node_modules'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
+  coverageDirectory: '<rootDir>/coverage',
+  coverageReporters: ['html-spa', 'json'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    '<rootDir>/api-report',
+    '<rootDir>/dist',
+  ],
 }

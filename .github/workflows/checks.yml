@@ -12,8 +12,11 @@ jobs:
     strategy:
       matrix:
         node-version: [16.14.2]
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout to branch
+        uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -33,7 +36,9 @@ jobs:
       matrix:
         node-version: [16.14.2]
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout to branch
+        uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -44,3 +49,8 @@ jobs:
 
       - name: Tests
         run: yarn test
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./coverage
