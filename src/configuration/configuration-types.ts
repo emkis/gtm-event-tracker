@@ -9,7 +9,7 @@ export type LoggerConfigurations = {
 }
 
 /**
- * All available configurations for this package.
+ * All available configuration options.
  * @public
  */
 export type Configurations = {
