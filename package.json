@@ -22,7 +22,7 @@
     "dev": "npm-run-all 'build:ts --watch --preserveWatchOutput'",
     "build": "npm-run-all clean build:ts",
     "build:ts": "npm-run-all ts:compile ts:replace-alias",
-    "lint": "eslint . --ext js,ts --fix",
+    "lint": "eslint . --ext js,ts",
     "test": "npm-run-all test:api-report test:unit:coverage",
     "test:unit": "jest",
     "test:unit:coverage": "npm-run-all 'test:unit --coverage'",
