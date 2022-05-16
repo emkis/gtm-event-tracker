@@ -5,6 +5,14 @@
 ```ts
 
 // @public
+export type Configurations = {
+    logger: LoggerConfigurations;
+};
+
+// @public
+export const configure: (customConfigs: Partial<Configurations>) => void;
+
+// @public
 export function createTrackerContext(initialProps?: EventProperties, options?: TrackerContextOptions): TrackerContext;
 
 // @public
@@ -30,6 +38,13 @@ export type LoggerAction = {
     contextName?: string;
     previousProperties: EventProperties;
     currentProperties: EventProperties;
+};
+
+// @public
+export type LoggerConfigurations = {
+    debugAll: boolean;
+    debugEvents: boolean;
+    debugContext: boolean;
 };
 
 // @public

@@ -11,6 +11,7 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist', '<rootDir>/node_modules'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^lodash-es$': 'lodash',
   },
   coverageDirectory: '<rootDir>/coverage',
   coverageReporters: ['html-spa', 'json'],

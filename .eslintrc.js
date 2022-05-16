@@ -36,7 +36,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/*.spec.ts', '**/*.test.ts'],
+      files: ['**/*.test.ts'],
       env: { jest: true, node: true },
     },
   ],
@@ -46,5 +46,6 @@ module.exports = {
     '/temp',
     '/storage',
     '/examples',
+    '/coverage',
   ],
 }

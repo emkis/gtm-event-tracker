@@ -2,13 +2,19 @@ export {
   createTrackerContext,
   TrackerContext,
   TrackerContextOptions,
-} from './tracker-context'
+} from '@/tracker-context'
 
 export {
   withTrackerContext,
   TrackModule,
   SubtractEventProperties,
-} from './with-tracker'
+} from '@/with-tracker'
 
-export type { EventProperties } from './data-layer'
-export { setLogger, Logger, LoggerAction } from './logger'
+export type { EventProperties } from '@/data-layer'
+export { setLogger, Logger, LoggerAction } from '@/logger'
+
+export {
+  configure,
+  Configurations,
+  LoggerConfigurations,
+} from '@/configuration'
