@@ -10,5 +10,11 @@ export {
   SubtractEventProperties,
 } from './with-tracker'
 
-export type { EventProperties } from './data-layer'
-export { setLogger, Logger, LoggerAction } from './logger'
+export type { EventProperties } from '@/data-layer'
+export { setLogger, Logger, LoggerAction } from '@/logger'
+
+export {
+  configure,
+  Configurations,
+  LoggerConfigurations,
+} from '@/configuration'
