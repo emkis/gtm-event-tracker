@@ -45,7 +45,7 @@ export function createTrackerContext(
 
     logContextUpdated({
       contextName: context.options.name,
-      currentProps: currentProps,
+      currentProps,
       newProps: newPropsCopy,
     })
     setProps(newPropsCopy)
