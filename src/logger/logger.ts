@@ -4,9 +4,8 @@ type LoggerOptions = Partial<{
   logger: Logger
 }>
 
-const defaultLogger: Logger = console
-
 export function createLogger(options: LoggerOptions = {}): LoggerFunctions {
+  const defaultLogger: Logger = console
   let logger: Logger = options.logger ?? defaultLogger
 
   function getLogger() {
@@ -20,7 +19,7 @@ export function createLogger(options: LoggerOptions = {}): LoggerFunctions {
   return { getLogger, setLogger }
 }
 
-const loggerFunctions = createLogger({ logger: defaultLogger })
+const loggerFunctions = createLogger()
 
 /**
  * Sets a custom logger.
