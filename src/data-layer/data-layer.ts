@@ -5,20 +5,27 @@ import {
 } from './data-layer-error'
 import type { EventProperties, DataLayerFunctions } from './data-layer-types'
 
-export function getDefaultTargetProperty() {
-  return window.dataLayer
-}
+type DataLayerOptions = Partial<{
+  targetProperty: EventProperties[]
+}>
 
-export function createDataLayer(): DataLayerFunctions {
+export function createDataLayer(
+  options: DataLayerOptions = {}
+): DataLayerFunctions {
+  function getTargetProperty() {
+    const defaultTarget: EventProperties[] = window.dataLayer
+    return options.targetProperty ?? defaultTarget
+  }
+
   function addEvent(payload: EventProperties) {
-    const targetProperty = getDefaultTargetProperty()
+    const targetProperty = getTargetProperty()
     targetProperty.push(payload)
   }
 
   function assertIsAvailable() {
     const isServer = () => typeof window === 'undefined'
-    const isDefined = () => typeof getDefaultTargetProperty() !== 'undefined'
-    const isArray = () => Array.isArray(getDefaultTargetProperty())
+    const isDefined = () => typeof getTargetProperty() !== 'undefined'
+    const isArray = () => Array.isArray(getTargetProperty())
 
     if (isServer()) throwIsServer()
     else if (!isDefined()) throwIsNotDefined()
