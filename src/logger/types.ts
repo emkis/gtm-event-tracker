@@ -25,8 +25,6 @@ export type LoggerAction =
  */
 export type Logger = {
   log: (action: LoggerAction) => void
-  warn: (action: LoggerAction) => void
-  error: (action: LoggerAction) => void
 }
 
 export type LoggerFunctions = Readonly<{

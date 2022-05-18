@@ -8,8 +8,6 @@ type LoggerOptions = {
 export const defaultLogger: Logger = console
 const disabledLogger: Logger = {
   log: () => null,
-  warn: () => null,
-  error: () => null,
 }
 
 export function createLogger(options: LoggerOptions): LoggerFunctions {

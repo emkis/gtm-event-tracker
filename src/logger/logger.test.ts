@@ -4,8 +4,6 @@ import type { Logger, LoggerAction } from './types'
 function makeMockLogger(): Logger {
   return {
     log: jest.fn().mockName('log'),
-    error: jest.fn().mockName('error'),
-    warn: jest.fn().mockName('warn'),
   }
 }
 
@@ -50,14 +48,12 @@ it('should call logger methods correctly', () => {
   }
 
   function callAllLogFunctions() {
-    const logFunctions = [logger.log, logger.warn, logger.error]
+    const logFunctions = [logger.log]
     logFunctions.forEach((logFunction) => logFunction(simpleLog))
   }
 
   callAllLogFunctions()
   expect(mockLogger.log).toHaveBeenNthCalledWith(1, simpleLog)
-  expect(mockLogger.warn).toHaveBeenNthCalledWith(1, simpleLog)
-  expect(mockLogger.error).toHaveBeenNthCalledWith(1, simpleLog)
 })
 
 it('should set a different logger object', () => {
@@ -66,8 +62,6 @@ it('should set a different logger object', () => {
 
   const customLogger: Logger = {
     log: () => null,
-    error: () => null,
-    warn: () => null,
   }
 
   setLogger(customLogger)
