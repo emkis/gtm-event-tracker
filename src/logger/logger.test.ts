@@ -22,6 +22,14 @@ it('should create logger without throwing any errors', () => {
   expect(() => createLogger({ logger: mockLogger })).not.toThrow()
 })
 
+it('should return different logger objects', () => {
+  const loggerA = createLogger()
+  const loggerB = createLogger()
+  const loggerC = createLogger({ logger: makeMockLogger() })
+  expect(loggerA).not.toBe(loggerB)
+  expect(loggerB).not.toBe(loggerC)
+})
+
 it('should return custom logger witch was provided as the custom logger', () => {
   const { mockLogger, getLogger } = makeLogger()
   const logger = getLogger()
