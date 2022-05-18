@@ -54,6 +54,21 @@ it('should push events to default target property', () => {
   expect(defaultTargetProperty).toEqual([eventPayloadA, eventPayloadB])
 })
 
+it('should throw error if is server side', () => {
+  const { window } = globalThis
+  // @ts-expect-error removing to test this use case
+  const removeWindowFromEnvironment = () => delete globalThis.window
+  const restoreWindow = () => (globalThis.window = window)
+
+  removeWindowFromEnvironment()
+  const dataLayer = createDataLayer()
+  expect(dataLayer.assertIsAvailable).toThrowError(WarningError)
+  expect(dataLayer.assertIsAvailable).toThrowError(
+    'Triggering events is not possible on server-side.'
+  )
+  restoreWindow()
+})
+
 it('should throw error if targetProperty is not available', () => {
   setDefaultTargetProperty(undefined)
 
