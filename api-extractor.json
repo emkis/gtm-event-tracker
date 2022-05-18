@@ -9,7 +9,7 @@
   "compiler": {},
   "apiReport": {
     "enabled": true,
-    "reportFolder": "<projectFolder>/api-report/"
+    "reportFolder": "<projectFolder>/.api-report"
   },
   "docModel": {
     "enabled": true
