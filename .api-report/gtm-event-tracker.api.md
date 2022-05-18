@@ -21,8 +21,6 @@ export type EventProperties = Record<string, string | number>;
 // @public
 export type Logger = {
     log: (action: LoggerAction) => void;
-    warn: (action: LoggerAction) => void;
-    error: (action: LoggerAction) => void;
 };
 
 // @public
