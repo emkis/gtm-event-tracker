@@ -1,21 +1,16 @@
 import type { LoggerFunctions, Logger } from './types'
 
-type LoggerOptions = {
+type LoggerOptions = Partial<{
   logger: Logger
-  isEnabled?: boolean
-}
+}>
 
-export const defaultLogger: Logger = console
-const disabledLogger: Logger = {
-  log: () => null,
-}
+const defaultLogger: Logger = console
 
-export function createLogger(options: LoggerOptions): LoggerFunctions {
-  const isLogsEnabled = options.isEnabled ?? false
-  let logger: Logger = options.logger
+export function createLogger(options: LoggerOptions = {}): LoggerFunctions {
+  let logger: Logger = options.logger ?? defaultLogger
 
   function getLogger() {
-    return isLogsEnabled ? logger : disabledLogger
+    return logger
   }
 
   function setLogger(targetLogger: Logger) {
