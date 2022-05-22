@@ -1,7 +1,7 @@
-import { createTrackerContext } from '../tracker-context'
+import { createTrackerContext } from '@/tracker-context'
 import { withTrackerContext } from './with-tracker'
-import { WarningError } from '../error'
-import type { EventProperties } from '../data-layer'
+import { WarningError } from '@/shared/error'
+import type { EventProperties } from '@/data-layer'
 
 function makeTracker(props?: EventProperties) {
   const context = createTrackerContext(props)

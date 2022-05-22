@@ -1,4 +1,4 @@
-import { InvalidConfigurationError } from '@/error'
+import { InvalidConfigurationError } from '@/shared/error'
 
 export function throwNoConfigurationProvided() {
   throw new InvalidConfigurationError(

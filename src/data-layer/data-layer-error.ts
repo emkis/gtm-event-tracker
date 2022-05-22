@@ -1,4 +1,4 @@
-import { WarningError } from '../error'
+import { WarningError } from '@/shared/error'
 
 export function throwIsServer() {
   throw new WarningError(

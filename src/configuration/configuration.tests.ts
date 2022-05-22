@@ -1,5 +1,5 @@
 import { createConfiguration } from './configuration'
-import { InvalidConfigurationError } from '@/error'
+import { InvalidConfigurationError } from '@/shared/error'
 import type { Configurations } from './configuration-types'
 
 const defaultConfigurations = {

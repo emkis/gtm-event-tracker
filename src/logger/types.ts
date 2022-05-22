@@ -1,4 +1,4 @@
-import { EventProperties } from '../data-layer'
+import { EventProperties } from '@/data-layer'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**

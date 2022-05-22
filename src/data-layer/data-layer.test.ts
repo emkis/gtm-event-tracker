@@ -1,6 +1,6 @@
 import { createDataLayer } from './data-layer'
 import type { EventProperties } from './data-layer-types'
-import { WarningError } from '../error'
+import { WarningError } from '@/shared/error'
 
 function makeDataLayer() {
   const mockTargetProperty: EventProperties[] = []

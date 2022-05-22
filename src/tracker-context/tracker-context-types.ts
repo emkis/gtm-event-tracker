@@ -1,4 +1,4 @@
-import type { EventProperties } from '../data-layer'
+import type { EventProperties } from '@/data-layer'
 
 /**
  * Options for customizing the Tracker Context.
