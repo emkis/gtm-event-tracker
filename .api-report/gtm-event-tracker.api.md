@@ -5,12 +5,12 @@
 ```ts
 
 // @public
-export type Configurations = {
+export type Configurations = Partial<{
     logger: LoggerConfigurations;
-};
+}>;
 
 // @public
-export const configure: (customConfigs: Partial<Configurations>) => void;
+export const configure: (customConfigs: Configurations) => void;
 
 // @public
 export function createTrackerContext(initialProps?: EventProperties, options?: TrackerContextOptions): TrackerContext;
@@ -39,11 +39,11 @@ export type LoggerAction = {
 };
 
 // @public
-export type LoggerConfigurations = {
+export type LoggerConfigurations = Partial<{
     debugAll: boolean;
     debugEvents: boolean;
     debugContext: boolean;
-};
+}>;
 
 // @public
 export const setLogger: (targetLogger: Logger) => void;
