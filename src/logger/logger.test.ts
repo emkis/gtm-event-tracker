@@ -1,5 +1,5 @@
 import { createLogger } from './logger'
-import type { Logger, LoggerAction } from './types'
+import type { Logger, LoggerAction } from './logger-types'
 
 function makeMockLogger(): Logger {
   return {

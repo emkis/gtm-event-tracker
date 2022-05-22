@@ -1,4 +1,4 @@
-import type { LoggerFunctions, Logger } from './types'
+import type { LoggerFunctions, Logger } from './logger-types'
 
 type LoggerOptions = Partial<{
   logger: Logger
