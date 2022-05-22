@@ -19,7 +19,7 @@ export function createConfiguration() {
     return configurations
   }
 
-  function configure(customConfigs: Partial<Configurations>) {
+  function configure(customConfigs: Configurations) {
     const isConfigDefined = Boolean(customConfigs)
     if (!isConfigDefined) throwNoConfigurationProvided()
     merge(configurations, customConfigs)
