@@ -1,5 +1,5 @@
 import { logContextCreated, logContextUpdated } from './tracker-context-logs'
-import type { EventProperties } from '@/data-layer'
+import type { EventProperties } from '@/shared/data-layer'
 import type {
   TrackerContext,
   TrackerContextOptions,

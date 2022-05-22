@@ -1,4 +1,4 @@
-import type { EventProperties } from '@/data-layer'
+import type { EventProperties } from '@/shared/data-layer'
 
 /**
  * Will subtract `PropsToSubtract` type from `OriginalProps` type. And ensure
