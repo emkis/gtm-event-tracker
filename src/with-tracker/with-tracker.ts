@@ -31,7 +31,7 @@ export function withTrackerContext<Properties extends EventProperties>({
   function trackEvent(eventProps: Properties) {
     const eventProperties = { ...context.value, ...eventProps }
 
-    dataLayer.assertIsAvailable()
+    dataLayer.checkTargetPropertyAvailability()
     dataLayer.addEvent(eventProperties)
     logEvent(eventProperties)
   }

@@ -62,8 +62,8 @@ it('should throw error if is server side', () => {
 
   removeWindowFromEnvironment()
   const dataLayer = createDataLayer()
-  expect(dataLayer.assertIsAvailable).toThrowError(WarningError)
-  expect(dataLayer.assertIsAvailable).toThrowError(
+  expect(dataLayer.checkTargetPropertyAvailability).toThrowError(WarningError)
+  expect(dataLayer.checkTargetPropertyAvailability).toThrowError(
     'Triggering events is not possible on server-side.'
   )
   restoreWindow()
@@ -73,8 +73,8 @@ it('should throw error if targetProperty is not available', () => {
   setDefaultTargetProperty(undefined)
 
   const dataLayer = createDataLayer()
-  expect(dataLayer.assertIsAvailable).toThrowError(WarningError)
-  expect(dataLayer.assertIsAvailable).toThrowError(
+  expect(dataLayer.checkTargetPropertyAvailability).toThrowError(WarningError)
+  expect(dataLayer.checkTargetPropertyAvailability).toThrowError(
     'The targetProperty is not defined.'
   )
 })
@@ -83,8 +83,8 @@ it('should throw error if targetProperty is not an array', () => {
   setDefaultTargetProperty({})
 
   const dataLayer = createDataLayer()
-  expect(dataLayer.assertIsAvailable).toThrowError(WarningError)
-  expect(dataLayer.assertIsAvailable).toThrowError(
+  expect(dataLayer.checkTargetPropertyAvailability).toThrowError(WarningError)
+  expect(dataLayer.checkTargetPropertyAvailability).toThrowError(
     'The targetProperty is not an array.'
   )
 })

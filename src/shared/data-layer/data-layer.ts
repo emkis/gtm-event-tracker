@@ -22,7 +22,7 @@ export function createDataLayer(
     targetProperty.push(payload)
   }
 
-  function assertIsAvailable() {
+  function checkTargetPropertyAvailability() {
     const isServer = () => typeof window === 'undefined'
     const isDefined = () => typeof getTargetProperty() !== 'undefined'
     const isArray = () => Array.isArray(getTargetProperty())
@@ -34,7 +34,7 @@ export function createDataLayer(
 
   return {
     addEvent,
-    assertIsAvailable,
+    checkTargetPropertyAvailability,
   }
 }
 

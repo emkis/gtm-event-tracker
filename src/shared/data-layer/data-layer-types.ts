@@ -15,10 +15,10 @@ export type DataLayerFunctions = Readonly<{
   addEvent: (payload: EventProperties) => void
 
   /**
-   * Asserts if the target array is available.
+   * Checks if the targetProperty is available.
    *
    * This array is injected in the `window` by Google Tag Manager, so you
    * just need to have this dependency installed correctly.
    */
-  assertIsAvailable: () => void
+  checkTargetPropertyAvailability: () => void
 }>
