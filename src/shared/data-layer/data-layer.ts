@@ -3,21 +3,20 @@ import {
   throwIsNotDefined,
   throwIsServer,
 } from './data-layer-error'
-import type { EventProperties, DataLayerFunctions } from './data-layer-types'
+import type { EventProperties, DataLayer } from './data-layer-types'
 
 type DataLayerOptions = Partial<{
   targetProperty: EventProperties[]
 }>
 
-export function createDataLayer(
-  options: DataLayerOptions = {}
-): DataLayerFunctions {
+export function createDataLayer(options: DataLayerOptions = {}): DataLayer {
   function getTargetProperty() {
     const defaultTarget: EventProperties[] = window.dataLayer
     return options.targetProperty ?? defaultTarget
   }
 
   function addEvent(payload: EventProperties) {
+    checkTargetPropertyAvailability()
     const targetProperty = getTargetProperty()
     targetProperty.push(payload)
   }
@@ -32,10 +31,7 @@ export function createDataLayer(
     else if (!isArray()) throwIsNotArray()
   }
 
-  return {
-    addEvent,
-    checkTargetPropertyAvailability,
-  }
+  return { addEvent }
 }
 
-export const dataLayer: DataLayerFunctions = createDataLayer()
+export const dataLayer: DataLayer = createDataLayer()
