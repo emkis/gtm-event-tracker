@@ -20,7 +20,6 @@ it('should throw error if window.dataLayer is not available', () => {
   const trackEmptyEvent = () => tracker.trackEvent({})
 
   expect(trackEmptyEvent).toThrowError(WarningError)
-  expect(trackEmptyEvent).toThrowError('The targetProperty is not defined.')
 })
 
 it('should throw error if window.dataLayer is not an array', () => {
@@ -30,7 +29,6 @@ it('should throw error if window.dataLayer is not an array', () => {
   const trackEmptyEvent = () => tracker.trackEvent({})
 
   expect(trackEmptyEvent).toThrowError(WarningError)
-  expect(trackEmptyEvent).toThrowError('The targetProperty is not an array.')
 })
 
 it('should contain all composed properties in the events', () => {

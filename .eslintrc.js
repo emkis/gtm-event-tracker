@@ -37,6 +37,9 @@ module.exports = {
     {
       files: ['**/*.test.ts'],
       env: { jest: true, node: true },
+      rules: {
+        'import/first': 'off',
+      },
     },
   ],
   ignorePatterns: [

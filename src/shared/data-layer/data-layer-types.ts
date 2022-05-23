@@ -5,20 +5,13 @@
 export type EventProperties = Record<string, string | number>
 
 /**
- * The type-safe and recommended way to interact with `window.dataLayer`.
+ * The type-safe and recommended way to interact with the `targetProperty`.
+ * By default the `targetProperty` is `window.dataLayer`.
  * @internal
  */
-export type DataLayerFunctions = Readonly<{
+export type DataLayer = Readonly<{
   /**
-   * Pushes an event to the target array.
+   * Pushes an event to the `targetProperty`.
    */
   addEvent: (payload: EventProperties) => void
-
-  /**
-   * Asserts if the target array is available.
-   *
-   * This array is injected in the `window` by Google Tag Manager, so you
-   * just need to have this dependency installed correctly.
-   */
-  assertIsAvailable: () => void
 }>
