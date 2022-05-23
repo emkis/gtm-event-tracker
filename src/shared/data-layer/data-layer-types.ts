@@ -5,12 +5,13 @@
 export type EventProperties = Record<string, string | number>
 
 /**
- * The type-safe and recommended way to interact with `window.dataLayer`.
+ * The type-safe and recommended way to interact with the `targetProperty`.
+ * By default the `targetProperty` is `window.dataLayer`.
  * @internal
  */
 export type DataLayer = Readonly<{
   /**
-   * Pushes an event to the target array.
+   * Pushes an event to the `targetProperty`.
    */
   addEvent: (payload: EventProperties) => void
 }>
