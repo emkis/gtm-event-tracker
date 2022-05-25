@@ -1,32 +1,36 @@
 import { createDataLayer } from './data-layer'
 import type { EventProperties } from './data-layer-types'
 import { WarningError } from '@/shared/error'
+import { configuration, Configurations } from '@/configuration'
 
-function makeDataLayer() {
-  const mockTargetProperty: EventProperties[] = []
+type DataLayerFactory = Partial<{
+  targetProperty: EventProperties[] | null | object
+}>
+
+function makeDataLayer({ targetProperty = [] }: DataLayerFactory = {}) {
+  const mockConfiguration: Configurations = {
+    logger: configuration.defaults().logger,
+    events: {
+      targetProperty: targetProperty as EventProperties[],
+    },
+  }
+
   return {
-    mockTargetProperty,
-    dataLayer: createDataLayer({ targetProperty: mockTargetProperty }),
+    mockConfiguration,
+    mockTargetProperty: targetProperty,
+    dataLayer: createDataLayer({ configurations: mockConfiguration }),
   }
 }
 
 function getDefaultTargetProperty() {
-  return window.dataLayer
+  const { events } = configuration.defaults()
+  return events.targetProperty
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function setDefaultTargetProperty(value: any) {
-  window.dataLayer = value
-}
-
-beforeEach(() => {
-  setDefaultTargetProperty([])
-})
 
 it('should return different data layer objects', () => {
   const { dataLayer: dataLayerA } = makeDataLayer()
   const { dataLayer: dataLayerB } = makeDataLayer()
-  const dataLayerC = createDataLayer({ targetProperty: [] })
+  const dataLayerC = createDataLayer()
   expect(dataLayerA).not.toBe(dataLayerB)
   expect(dataLayerB).not.toBe(dataLayerC)
 })
@@ -54,14 +58,6 @@ it('should push events to default target property', () => {
   expect(defaultTargetProperty).toEqual([eventPayloadA, eventPayloadB])
 })
 
-it('should throw error twice', () => {
-  const dataLayer = createDataLayer()
-  setDefaultTargetProperty(undefined)
-  expect(dataLayer.addEvent).toThrowError(WarningError)
-  setDefaultTargetProperty({})
-  expect(dataLayer.addEvent).toThrowError(WarningError)
-})
-
 it('should throw error if is server side', () => {
   const { window } = globalThis
   // @ts-expect-error removing to test this use case
@@ -75,28 +71,26 @@ it('should throw error if is server side', () => {
 })
 
 it('should throw error if targetProperty is not available', () => {
-  setDefaultTargetProperty(undefined)
-  const dataLayer = createDataLayer()
+  const { dataLayer } = makeDataLayer({ targetProperty: null })
   expect(dataLayer.addEvent).toThrowError(WarningError)
 })
 
 it('should throw error if targetProperty is not an array', () => {
-  setDefaultTargetProperty({})
-  const dataLayer = createDataLayer()
+  const { dataLayer } = makeDataLayer({ targetProperty: {} })
   expect(dataLayer.addEvent).toThrowError(WarningError)
 })
 
 it('should be able to push event when targetProperty is available', () => {
-  setDefaultTargetProperty(undefined)
-  const dataLayer = createDataLayer()
-  expect(dataLayer.addEvent).toThrowError(WarningError)
-  expect(getDefaultTargetProperty()).toBe(undefined)
+  const { dataLayer, mockConfiguration } = makeDataLayer({
+    targetProperty: null,
+  })
 
-  setDefaultTargetProperty([])
+  expect(dataLayer.addEvent).toThrowError(WarningError)
+  mockConfiguration.events.targetProperty = []
   const eventPayload: EventProperties = { some: 'data' }
-  const defaultTargetProperty = getDefaultTargetProperty()
+
   expect(() => {
     dataLayer.addEvent(eventPayload)
   }).not.toThrow()
-  expect(defaultTargetProperty).toEqual([eventPayload])
+  expect(mockConfiguration.events.targetProperty).toEqual([eventPayload])
 })
