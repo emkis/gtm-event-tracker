@@ -3,16 +3,21 @@ import {
   throwIsNotDefined,
   throwIsServer,
 } from './data-layer-error'
+import { configuration, Configurations } from '@/configuration'
 import type { EventProperties, DataLayer } from './data-layer-types'
 
 type DataLayerOptions = Partial<{
-  targetProperty: EventProperties[]
+  configurations: Configurations
 }>
 
 export function createDataLayer(options: DataLayerOptions = {}): DataLayer {
+  function getConfiguration(): Configurations {
+    return options.configurations ?? configuration.get()
+  }
+
   function getTargetProperty() {
-    const defaultTarget: EventProperties[] = window.dataLayer
-    return options.targetProperty ?? defaultTarget
+    const configurations = getConfiguration()
+    return configurations.events.targetProperty
   }
 
   function addEvent(payload: EventProperties) {
