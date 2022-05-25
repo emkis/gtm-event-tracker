@@ -1,6 +1,7 @@
 import { merge } from 'lodash-es'
 import { throwNoConfigurationProvided } from './configuration-errors'
 import type { Configurations } from './configuration-types'
+import type { PartialDeep } from 'type-fest'
 
 export function createConfiguration() {
   const configurations: Configurations = defaults()
@@ -12,14 +13,17 @@ export function createConfiguration() {
         debugEvents: false,
         debugContext: false,
       },
+      events: {
+        targetProperty: window.dataLayer,
+      },
     }
   }
 
-  function get() {
+  function get(): Configurations {
     return configurations
   }
 
-  function configure(customConfigs: Configurations) {
+  function configure(customConfigs: PartialDeep<Configurations>) {
     const isConfigDefined = Boolean(customConfigs)
     if (!isConfigDefined) throwNoConfigurationProvided()
     merge(configurations, customConfigs)
