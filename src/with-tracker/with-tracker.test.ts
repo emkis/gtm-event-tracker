@@ -1,6 +1,9 @@
 import { createTrackerContext } from '@/tracker-context'
 import { withTrackerContext } from './with-tracker'
-import type { EventProperties } from '@/shared/data-layer'
+import { dataLayer, EventProperties } from '@/shared/data-layer'
+
+jest.mock('@/shared/data-layer')
+const mockedDataLayer = jest.mocked(dataLayer)
 
 function makeTracker(props?: EventProperties) {
   const context = createTrackerContext(props)
@@ -26,26 +29,28 @@ it('should contain all composed properties in the events', () => {
   trackEvent(eventPropertiesB)
   trackEvent({})
 
-  const [eventPayloadA, eventPayloadB, eventPayloadC] = window.dataLayer
-
-  expect(window.dataLayer).toHaveLength(3)
-  expect(eventPayloadA).toStrictEqual({ ...contextProps, ...eventPropertiesA })
-  expect(eventPayloadB).toStrictEqual({ ...contextProps, ...eventPropertiesB })
-  expect(eventPayloadC).toStrictEqual(contextProps)
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
+    ...contextProps,
+    ...eventPropertiesA,
+  })
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(2, {
+    ...contextProps,
+    ...eventPropertiesB,
+  })
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(3, contextProps)
+  expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(3)
 })
 
 it('should be able to overwrite context properties in track event', () => {
   const contextProps = { static: 'prop', from: 'context' }
   const { trackEvent } = makeTracker(contextProps)
+  const eventPayloadOverwriter = { id: 'def', from: 'trackEvent' }
+  trackEvent(eventPayloadOverwriter)
 
-  trackEvent({ foo: 'bar', from: 'trackEvent' })
-  const [eventPayload] = window.dataLayer
-
-  expect(window.dataLayer).toHaveLength(1)
-  expect(eventPayload).toStrictEqual({
-    static: 'prop',
-    from: 'trackEvent',
-    foo: 'bar',
+  expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(1)
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
+    ...contextProps,
+    ...eventPayloadOverwriter,
   })
 })
 
@@ -63,18 +68,20 @@ it('should inject repeated props in the events', () => {
   trackCoolEvent({ isFromPartial: 'oh yes' })
   trackCoolEvent({ soCool: 'true' })
   tracker.trackEvent({ isAlone: 'true' })
-  const [coolPayloadA, coolPayloadB, alonePayload] = window.dataLayer
 
-  expect(coolPayloadA).toStrictEqual({
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
     from: 'context',
     isRepeatedProp: 'yes',
     isFromPartial: 'oh yes',
   })
-  expect(coolPayloadB).toStrictEqual({
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(2, {
     from: 'context',
     isRepeatedProp: 'yes',
     soCool: 'true',
   })
-  expect(alonePayload).toStrictEqual({ from: 'context', isAlone: 'true' })
-  expect(window.dataLayer).toHaveLength(3)
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(3, {
+    from: 'context',
+    isAlone: 'true',
+  })
+  expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(3)
 })
