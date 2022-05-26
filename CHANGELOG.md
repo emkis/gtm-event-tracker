@@ -1,3 +1,18 @@
+# [1.7.0-beta.6](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.5...v1.7.0-beta.6) (2022-05-26)
+
+
+### Bug Fixes
+
+* **data-layer:** ensure targetProperty is truthy ([9ceb078](https://github.com/emkis/gtm-event-tracker/commit/9ceb0782372d748cf1a234d66c921723ec54c8c0))
+
+
+### Features
+
+* **configuration:** add events default options ([d1e5c9b](https://github.com/emkis/gtm-event-tracker/commit/d1e5c9b157ff6fc2521efa41538223358af8dfd7))
+* **configuration:** add events options ([f6a1c12](https://github.com/emkis/gtm-event-tracker/commit/f6a1c12ba0bbd3bde940c6ee75daf673b0a5773f))
+* **data-layer:** get targetProperty from configuration ([99fd7dc](https://github.com/emkis/gtm-event-tracker/commit/99fd7dcb643e16cdcfdc9d5e19cf005a655b5735))
+* export type EventsConfigurations ([fcd8e10](https://github.com/emkis/gtm-event-tracker/commit/fcd8e10bbea0efa0591dba2aefb01e5cd7839cb0))
+
 # [1.7.0-beta.5](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.4...v1.7.0-beta.5) (2022-05-23)
 
 # [1.7.0-beta.4](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.3...v1.7.0-beta.4) (2022-05-22)
