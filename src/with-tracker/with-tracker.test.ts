@@ -1,35 +1,11 @@
 import { createTrackerContext } from '@/tracker-context'
 import { withTrackerContext } from './with-tracker'
-import { WarningError } from '@/shared/error'
 import type { EventProperties } from '@/shared/data-layer'
 
 function makeTracker(props?: EventProperties) {
   const context = createTrackerContext(props)
   return withTrackerContext(context)
 }
-
-beforeEach(() => {
-  window.dataLayer = []
-})
-
-it('should throw error if window.dataLayer is not available', () => {
-  // @ts-expect-error deleting for purposes of this test
-  delete window.dataLayer
-
-  const tracker = makeTracker()
-  const trackEmptyEvent = () => tracker.trackEvent({})
-
-  expect(trackEmptyEvent).toThrowError(WarningError)
-})
-
-it('should throw error if window.dataLayer is not an array', () => {
-  // @ts-expect-error changing for purposes of this test
-  window.dataLayer = {}
-  const tracker = makeTracker()
-  const trackEmptyEvent = () => tracker.trackEvent({})
-
-  expect(trackEmptyEvent).toThrowError(WarningError)
-})
 
 it('should contain all composed properties in the events', () => {
   const contextProps = { foo: 'bar', baz: 'quz' }
