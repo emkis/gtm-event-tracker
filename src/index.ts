@@ -17,4 +17,5 @@ export {
   configure,
   Configurations,
   LoggerConfigurations,
+  EventsConfigurations,
 } from '@/configuration'

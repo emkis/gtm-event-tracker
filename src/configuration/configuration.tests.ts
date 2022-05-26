@@ -8,6 +8,9 @@ const defaultConfigurations = {
     debugEvents: false,
     debugContext: false,
   },
+  events: {
+    targetProperty: window.dataLayer,
+  },
 } as const
 
 it('should initialize configuration with default values', () => {
@@ -66,9 +69,12 @@ it('should not change any configurations', () => {
 
   configuration.configure({ logger: undefined })
   expect(configuration.get()).toEqual(defaultConfigurations)
+
+  configuration.configure({ events: { targetProperty: undefined } })
+  expect(configuration.get()).toEqual(defaultConfigurations)
 })
 
-it('should change logger configurations', () => {
+it('should change specific configurations', () => {
   const configuration = createConfiguration()
   const modifiedConfigurations: Partial<Configurations> = {
     logger: {
@@ -76,6 +82,7 @@ it('should change logger configurations', () => {
       debugContext: true,
       debugEvents: true,
     },
+    events: { ...defaultConfigurations.events },
   }
 
   configuration.configure(modifiedConfigurations)
