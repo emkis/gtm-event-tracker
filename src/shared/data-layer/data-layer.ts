@@ -28,7 +28,7 @@ export function createDataLayer(options: DataLayerOptions = {}): DataLayer {
 
   function checkTargetPropertyAvailability() {
     const isServer = () => typeof window === 'undefined'
-    const isDefined = () => typeof getTargetProperty() !== 'undefined'
+    const isDefined = () => Boolean(getTargetProperty())
     const isArray = () => Array.isArray(getTargetProperty())
 
     if (isServer()) throwIsServer()
