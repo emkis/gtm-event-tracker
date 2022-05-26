@@ -6,12 +6,6 @@ import type { EventProperties } from '@/shared/data-layer'
  */
 export type TrackerContextOptions = {
   /**
-   * Will log every interaction with this context, such as:
-   * Context creation, Context updated, and Triggered events.
-   */
-  debug?: boolean
-
-  /**
    * The name for this context.
    *
    * It can be helpful when you are using the Logger and your application has more than one context.

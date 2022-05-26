@@ -66,7 +66,6 @@ export type TrackerContext = Readonly<{
 
 // @public
 export type TrackerContextOptions = {
-    debug?: boolean;
     name?: string;
 };
 
