@@ -9,7 +9,7 @@ const defaultConfigurations = {
     debugContext: false,
   },
   events: {
-    targetProperty: window.dataLayer,
+    targetProperty: () => window.dataLayer,
   },
 } as const
 

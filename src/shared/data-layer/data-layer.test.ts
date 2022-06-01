@@ -4,14 +4,14 @@ import { WarningError } from '@/shared/error'
 import { configuration, Configurations } from '@/configuration'
 
 type DataLayerFactory = Partial<{
-  targetProperty: EventProperties[] | null | object
+  targetProperty: () => EventProperties[] | null | object
 }>
 
-function makeDataLayer({ targetProperty = [] }: DataLayerFactory = {}) {
+function makeDataLayer({ targetProperty = () => [] }: DataLayerFactory = {}) {
   const mockConfiguration: Configurations = {
     logger: configuration.defaults().logger,
     events: {
-      targetProperty: targetProperty as EventProperties[],
+      targetProperty: targetProperty as () => EventProperties[],
     },
   }
 
@@ -71,22 +71,22 @@ it('should throw error if is server side', () => {
 })
 
 it('should throw error if targetProperty is not available', () => {
-  const { dataLayer } = makeDataLayer({ targetProperty: null })
+  const { dataLayer } = makeDataLayer({ targetProperty: () => null })
   expect(dataLayer.addEvent).toThrowError(WarningError)
 })
 
 it('should throw error if targetProperty is not an array', () => {
-  const { dataLayer } = makeDataLayer({ targetProperty: {} })
+  const { dataLayer } = makeDataLayer({ targetProperty: () => ({}) })
   expect(dataLayer.addEvent).toThrowError(WarningError)
 })
 
 it('should be able to push event when targetProperty is available', () => {
   const { dataLayer, mockConfiguration } = makeDataLayer({
-    targetProperty: null,
+    targetProperty: () => null,
   })
 
   expect(dataLayer.addEvent).toThrowError(WarningError)
-  mockConfiguration.events.targetProperty = []
+  mockConfiguration.events.targetProperty = () => []
   const eventPayload: EventProperties = { some: 'data' }
 
   expect(() => {
