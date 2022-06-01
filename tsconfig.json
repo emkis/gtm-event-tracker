@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "commonjs",
-    "sourceMap": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "declaration": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -13,9 +15,8 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "./dist-types",
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
@@ -33,6 +34,10 @@
     "node_modules",
     "**/node_modules/*",
     "dist",
-    "build"
+    "build",
+    "**/__mocks__/*",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.tests.ts"
   ]
 }
