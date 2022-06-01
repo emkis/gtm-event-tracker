@@ -1,6 +1,7 @@
 # Build
 /dist
 /temp
+/dist-types
 
 # Verdaccio
 /storage
