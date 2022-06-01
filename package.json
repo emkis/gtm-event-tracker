@@ -34,8 +34,8 @@
     "test:api-report": "npm-run-all build api-report",
     "test:api-report:update": "npm-run-all build 'api-report --local'",
     "api-report": "api-extractor run",
-    "ts:compile": "tsc --project tsconfig.json",
-    "ts:replace-alias": "tsc-alias --project tsconfig.json"
+    "ts:compile": "tsc --project tsconfig.build.json",
+    "ts:replace-alias": "tsc-alias --project tsconfig.build.json"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
