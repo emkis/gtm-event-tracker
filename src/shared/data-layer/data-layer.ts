@@ -17,7 +17,7 @@ export function createDataLayer(options: DataLayerOptions = {}): DataLayer {
 
   function getTargetProperty() {
     const configurations = getConfiguration()
-    return configurations.events.targetProperty
+    return configurations.events.targetProperty()
   }
 
   function addEvent(payload: EventProperties) {

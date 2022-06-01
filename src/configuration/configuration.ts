@@ -14,7 +14,7 @@ export function createConfiguration() {
         debugContext: false,
       },
       events: {
-        targetProperty: window.dataLayer,
+        targetProperty: () => window.dataLayer,
       },
     }
   }

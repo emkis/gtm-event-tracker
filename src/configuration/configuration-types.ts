@@ -15,7 +15,7 @@ export type LoggerConfigurations = {
  * @public
  */
 export type EventsConfigurations = {
-  targetProperty: EventProperties[]
+  targetProperty: () => EventProperties[]
 }
 
 /**

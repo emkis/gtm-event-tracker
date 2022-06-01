@@ -23,7 +23,7 @@ export type EventProperties = Record<string, string | number>;
 
 // @public
 export type EventsConfigurations = {
-    targetProperty: EventProperties[];
+    targetProperty: () => EventProperties[];
 };
 
 // @public
