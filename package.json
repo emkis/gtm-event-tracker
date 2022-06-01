@@ -22,10 +22,11 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "clean": "rimraf dist temp coverage *.tsbuildinfo",
+    "clean": "rimraf dist* temp coverage *.tsbuildinfo",
     "dev": "npm-run-all 'build:ts --watch --preserveWatchOutput'",
-    "build": "npm-run-all clean build:ts",
-    "build:ts": "npm-run-all ts:compile ts:replace-alias",
+    "build": "npm-run-all clean build:ts build:types",
+    "build:ts": "rollup --config rollup.config.js",
+    "build:types": "npm-run-all ts:compile ts:replace-alias",
     "lint": "eslint . --ext js,ts",
     "test": "npm-run-all test:api-report test:unit:coverage",
     "test:unit": "jest",
@@ -33,8 +34,8 @@
     "test:api-report": "npm-run-all build api-report",
     "test:api-report:update": "npm-run-all build 'api-report --local'",
     "api-report": "api-extractor run",
-    "ts:compile": "tsc --project tsconfig.build.json",
-    "ts:replace-alias": "tsc-alias --project tsconfig.build.json"
+    "ts:compile": "tsc --project tsconfig.json",
+    "ts:replace-alias": "tsc-alias --project tsconfig.json"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
