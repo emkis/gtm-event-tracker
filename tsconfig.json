@@ -31,14 +31,9 @@
     "src"
   ],
   "exclude": [
-    "node_modules",
     "**/node_modules/*",
-    "dist",
-    "dist-types",
-    "build",
-    "**/__mocks__/*",
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/*.tests.ts"
+    "/dist",
+    "/dist-types",
+    "/build",
   ]
 }
