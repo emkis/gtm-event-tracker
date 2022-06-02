@@ -17,13 +17,11 @@
   "module": "dist/index.es.js",
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": "git@github.com:emkis/gtm-event-tracker.git",
-  "files": [
-    "/dist"
-  ],
+  "files": ["/dist"],
   "scripts": {
     "prepare": "husky install",
     "clean": "rimraf dist* temp coverage *.tsbuildinfo",
-    "dev": "npm-run-all 'build:ts --watch --preserveWatchOutput'",
+    "dev": "npm-run-all clean 'build:ts --watch'",
     "build": "npm-run-all clean build:ts build:types",
     "build:ts": "rollup --config rollup.config.js",
     "build:types": "npm-run-all ts:compile ts:replace-alias",
