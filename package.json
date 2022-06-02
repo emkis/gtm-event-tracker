@@ -5,7 +5,7 @@
     "email": "nicolasemkis@gmail.com"
   },
   "license": "MIT",
-  "version": "1.7.0-beta.6",
+  "version": "1.7.0-beta.7",
   "description": "A type-safe, reusable, and flexible way for triggering Google Tag Manager track events.",
   "keywords": [
     "gtm",
@@ -17,7 +17,9 @@
   "module": "dist/index.es.js",
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": "git@github.com:emkis/gtm-event-tracker.git",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "prepare": "husky install",
     "clean": "rimraf dist* temp coverage *.tsbuildinfo",

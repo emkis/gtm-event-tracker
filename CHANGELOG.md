@@ -1,3 +1,11 @@
+# [1.7.0-beta.7](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.6...v1.7.0-beta.7) (2022-06-02)
+
+
+### Bug Fixes
+
+* **configuration:** make targetProperty a function ([cebee44](https://github.com/emkis/gtm-event-tracker/commit/cebee44a414a403b6dca5f7decc6f0d12528ff90))
+* **configuration:** make targetProperty a function ([c832bc9](https://github.com/emkis/gtm-event-tracker/commit/c832bc9582921c622b59a6761cc143ae42abfd1d))
+
 # [1.7.0-beta.6](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.5...v1.7.0-beta.6) (2022-05-26)
 
 
