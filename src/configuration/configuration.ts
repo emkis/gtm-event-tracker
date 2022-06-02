@@ -1,4 +1,4 @@
-import { merge } from 'lodash-es'
+import merge from 'lodash-es/merge'
 import { throwNoConfigurationProvided } from './configuration-errors'
 import type { Configurations } from './configuration-types'
 import type { PartialDeep } from 'type-fest'
