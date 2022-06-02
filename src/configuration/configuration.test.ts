@@ -9,7 +9,7 @@ const defaultConfigurations = {
     debugContext: false,
   },
   events: {
-    targetProperty: () => window.dataLayer,
+    targetProperty: expect.any(Function),
   },
 } as const
 
@@ -18,7 +18,7 @@ it('should initialize configuration with default values', () => {
   const initialConfigs = configuration.get()
   const defaultConfigs = configuration.defaults()
 
-  expect(initialConfigs).toEqual(defaultConfigs)
+  expect(initialConfigs).toEqual(defaultConfigurations)
   expect(defaultConfigs).toEqual(defaultConfigurations)
 })
 

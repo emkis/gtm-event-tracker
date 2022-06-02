@@ -7,7 +7,11 @@ type DataLayerFactory = Partial<{
   targetProperty: () => EventProperties[] | null | object
 }>
 
-function makeDataLayer({ targetProperty = () => [] }: DataLayerFactory = {}) {
+function makeDataLayer(options?: DataLayerFactory) {
+  const localTargetProperty: EventProperties[] = []
+  const getLocalTargetProperty = () => localTargetProperty
+  const targetProperty = options?.targetProperty ?? getLocalTargetProperty
+
   const mockConfiguration: Configurations = {
     logger: configuration.defaults().logger,
     events: {
@@ -24,7 +28,7 @@ function makeDataLayer({ targetProperty = () => [] }: DataLayerFactory = {}) {
 
 function getDefaultTargetProperty() {
   const { events } = configuration.defaults()
-  return events.targetProperty
+  return events.targetProperty()
 }
 
 it('should return different data layer objects', () => {
@@ -42,8 +46,8 @@ it('should push events to custom target property', () => {
 
   dataLayer.addEvent(eventPayloadA)
   dataLayer.addEvent(eventPayloadB)
-  expect(mockTargetProperty).toHaveLength(2)
-  expect(mockTargetProperty).toEqual([eventPayloadA, eventPayloadB])
+  expect(mockTargetProperty()).toHaveLength(2)
+  expect(mockTargetProperty()).toEqual([eventPayloadA, eventPayloadB])
 })
 
 it('should push events to default target property', () => {
@@ -84,13 +88,13 @@ it('should be able to push event when targetProperty is available', () => {
   const { dataLayer, mockConfiguration } = makeDataLayer({
     targetProperty: () => null,
   })
-
   expect(dataLayer.addEvent).toThrowError(WarningError)
-  mockConfiguration.events.targetProperty = () => []
-  const eventPayload: EventProperties = { some: 'data' }
 
+  const customTargetProperty: EventProperties[] = []
+  mockConfiguration.events.targetProperty = () => customTargetProperty
+  const eventPayload: EventProperties = { some: 'data' }
   expect(() => {
     dataLayer.addEvent(eventPayload)
   }).not.toThrow()
-  expect(mockConfiguration.events.targetProperty).toEqual([eventPayload])
+  expect(mockConfiguration.events.targetProperty()).toEqual([eventPayload])
 })
