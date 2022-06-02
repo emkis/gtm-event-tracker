@@ -1,12 +1,13 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
+import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import size from 'rollup-plugin-size'
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
   input: 'src/index.ts',
-  plugins: [typescript(), nodeResolve(), size({ gzip: true })],
+  plugins: [typescript(), commonjs(), nodeResolve(), size({ gzip: true })],
   output: [
     {
       file: 'dist/index.cjs.js',
