@@ -37,6 +37,9 @@
     "ts:compile": "tsc --project tsconfig.build.json",
     "ts:replace-alias": "tsc-alias --project tsconfig.build.json"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "lodash.merge": "^4.6.2"
   },
