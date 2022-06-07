@@ -1,4 +1,4 @@
-import { EventProperties } from '@/shared/data-layer'
+import type { EventProperties } from '@/shared/data-layer'
 
 /**
  * Available types of log actions.
