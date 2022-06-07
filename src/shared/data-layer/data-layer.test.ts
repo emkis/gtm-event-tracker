@@ -1,7 +1,7 @@
 import { createDataLayer } from './data-layer'
 import type { EventProperties } from './data-layer-types'
 import { WarningError } from '@/shared/error'
-import { configuration, Configurations } from '@/configuration'
+import { configuration, Configurations } from '@/shared/configuration'
 
 type DataLayerFactory = Partial<{
   targetProperty: () => EventProperties[] | null | object

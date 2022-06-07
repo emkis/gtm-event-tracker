@@ -3,7 +3,7 @@ import {
   throwIsNotDefined,
   throwIsServer,
 } from './data-layer-error'
-import { configuration, Configurations } from '@/configuration'
+import { configuration, Configurations } from '@/shared/configuration'
 import type { EventProperties, DataLayer } from './data-layer-types'
 
 type DataLayerOptions = Partial<{
