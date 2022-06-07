@@ -9,12 +9,12 @@ const config = {
   input: 'src/index.ts',
   output: [
     {
-      file: 'dist/index.cjs.js',
+      file: 'dist/cjs/index.js',
       format: 'commonjs',
       sourcemap: true,
     },
     {
-      file: 'dist/index.es.js',
+      file: 'dist/es/index.js',
       format: 'es',
       sourcemap: true,
     },
