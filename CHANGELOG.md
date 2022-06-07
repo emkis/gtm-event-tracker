@@ -1,3 +1,10 @@
+# [1.7.0-beta.9](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.8...v1.7.0-beta.9) (2022-06-07)
+
+
+### Features
+
+* **rollup:** add transpilation and minification with esbuild ([b4cd353](https://github.com/emkis/gtm-event-tracker/commit/b4cd3537784b9439089e2584fe0693afe58997e0))
+
 # [1.7.0-beta.8](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.7...v1.7.0-beta.8) (2022-06-02)
 
 # [1.7.0-beta.7](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.6...v1.7.0-beta.7) (2022-06-02)
