@@ -40,9 +40,6 @@
   "engines": {
     "node": ">=14"
   },
-  "dependencies": {
-    "lodash.merge": "^4.6.2"
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",
@@ -59,8 +56,6 @@
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/jest": "^28.1.1",
-    "@types/lodash-es": "^4.17.6",
-    "@types/lodash.merge": "^4.6.7",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "esbuild": "^0.14.42",
