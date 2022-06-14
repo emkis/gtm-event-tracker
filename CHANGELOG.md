@@ -1,3 +1,10 @@
+# [1.7.0-beta.10](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.9...v1.7.0-beta.10) (2022-06-14)
+
+
+### Features
+
+* add logger manager for handling log rules ([1416e5b](https://github.com/emkis/gtm-event-tracker/commit/1416e5bf8afc35841ded541eebb65dd101329b12))
+
 # [1.7.0-beta.9](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.8...v1.7.0-beta.9) (2022-06-07)
 
 
