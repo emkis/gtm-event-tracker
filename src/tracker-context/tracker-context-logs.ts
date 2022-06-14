@@ -1,5 +1,5 @@
 import type { EventProperties } from '@/shared/data-layer'
-import { getLogger } from '@/logger'
+import { loggerManager } from '@/shared/logger-manager'
 
 type ContextCreatedParams = {
   contextName?: string
@@ -13,16 +13,14 @@ type ContextUpdatedParams = {
 }
 
 export function logContextCreated(params: ContextCreatedParams) {
-  const logger = getLogger()
   const { contextName, properties } = params
-  logger.log({ type: 'context-created', contextName, properties })
+  loggerManager.log({ type: 'context-created', contextName, properties })
 }
 
 export function logContextUpdated(params: ContextUpdatedParams) {
-  const logger = getLogger()
   const { contextName, currentProps, newProps } = params
 
-  logger.log({
+  loggerManager.log({
     type: 'context-updated',
     contextName,
     previousProperties: currentProps,
