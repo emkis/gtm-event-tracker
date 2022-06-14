@@ -1,7 +1,6 @@
 import { throwNoConfigurationProvided } from './configuration-errors'
 import { removeEmptyPropsFromObject } from './configuration-utils'
 import type { Configurations } from './configuration-types'
-import type { PartialDeep } from 'type-fest'
 
 export function createConfiguration() {
   const configurations: Configurations = defaults()
@@ -24,7 +23,7 @@ export function createConfiguration() {
     Object.assign(configurations, safeConfigValues)
   }
 
-  function configure(customConfigs: PartialDeep<Configurations>) {
+  function configure(customConfigs: Partial<Configurations>) {
     const isConfigDefined = Boolean(customConfigs)
     if (!isConfigDefined) throwNoConfigurationProvided()
     setConfigurations(customConfigs)
