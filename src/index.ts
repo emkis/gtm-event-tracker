@@ -10,8 +10,4 @@ export { setLogger } from '@/logger'
 export type { Logger, LoggerAction } from '@/logger'
 
 export { configure } from '@/shared/configuration'
-export type {
-  Configurations,
-  LoggerConfigurations,
-  EventsConfigurations,
-} from '@/shared/configuration'
+export type { Configurations } from '@/shared/configuration'
