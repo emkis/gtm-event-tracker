@@ -1,21 +1,16 @@
-import merge from 'lodash.merge'
 import { throwNoConfigurationProvided } from './configuration-errors'
+import { removeEmptyPropsFromObject } from './configuration-utils'
 import type { Configurations } from './configuration-types'
-import type { PartialDeep } from 'type-fest'
 
 export function createConfiguration() {
   const configurations: Configurations = defaults()
 
   function defaults(): Configurations {
     return {
-      logger: {
-        debugAll: false,
-        debugEvents: false,
-        debugContext: false,
-      },
-      events: {
-        targetProperty: () => window.dataLayer,
-      },
+      debugAll: false,
+      debugEvents: false,
+      debugContext: false,
+      targetProperty: () => window.dataLayer,
     }
   }
 
@@ -23,10 +18,15 @@ export function createConfiguration() {
     return configurations
   }
 
-  function configure(customConfigs: PartialDeep<Configurations>) {
+  function setConfigurations(configs: object) {
+    const safeConfigValues = removeEmptyPropsFromObject(configs)
+    Object.assign(configurations, safeConfigValues)
+  }
+
+  function configure(customConfigs: Partial<Configurations>) {
     const isConfigDefined = Boolean(customConfigs)
     if (!isConfigDefined) throwNoConfigurationProvided()
-    merge(configurations, customConfigs)
+    setConfigurations(customConfigs)
   }
 
   return { get, defaults, configure }

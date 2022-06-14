@@ -13,10 +13,8 @@ function makeDataLayer(options?: DataLayerFactory) {
   const targetProperty = options?.targetProperty ?? getLocalTargetProperty
 
   const mockConfiguration: Configurations = {
-    logger: configuration.defaults().logger,
-    events: {
-      targetProperty: targetProperty as () => EventProperties[],
-    },
+    ...configuration.defaults(),
+    targetProperty: targetProperty as () => EventProperties[],
   }
 
   return {
@@ -27,8 +25,8 @@ function makeDataLayer(options?: DataLayerFactory) {
 }
 
 function getDefaultTargetProperty() {
-  const { events } = configuration.defaults()
-  return events.targetProperty()
+  const { targetProperty } = configuration.defaults()
+  return targetProperty()
 }
 
 it('should return different data layer objects', () => {
@@ -91,10 +89,10 @@ it('should be able to push event when targetProperty is available', () => {
   expect(dataLayer.addEvent).toThrowError(WarningError)
 
   const customTargetProperty: EventProperties[] = []
-  mockConfiguration.events.targetProperty = () => customTargetProperty
+  mockConfiguration.targetProperty = () => customTargetProperty
   const eventPayload: EventProperties = { some: 'data' }
   expect(() => {
     dataLayer.addEvent(eventPayload)
   }).not.toThrow()
-  expect(mockConfiguration.events.targetProperty()).toEqual([eventPayload])
+  expect(mockConfiguration.targetProperty()).toEqual([eventPayload])
 })

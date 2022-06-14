@@ -4,27 +4,22 @@
 
 ```ts
 
-import type { PartialDeep } from 'type-fest';
-
 // @public
 export type Configurations = {
-    logger: LoggerConfigurations;
-    events: EventsConfigurations;
+    debugAll: boolean;
+    debugEvents: boolean;
+    debugContext: boolean;
+    targetProperty: () => EventProperties[];
 };
 
 // @public
-export const configure: (customConfigs: PartialDeep<Configurations>) => void;
+export const configure: (customConfigs: Partial<Configurations>) => void;
 
 // @public
 export function createTrackerContext(initialProps?: EventProperties, options?: TrackerContextOptions): TrackerContext;
 
 // @public
 export type EventProperties = Record<string, string | number>;
-
-// @public
-export type EventsConfigurations = {
-    targetProperty: () => EventProperties[];
-};
 
 // @public
 export type Logger = {
@@ -44,13 +39,6 @@ export type LoggerAction = {
     contextName?: string;
     previousProperties: EventProperties;
     currentProperties: EventProperties;
-};
-
-// @public
-export type LoggerConfigurations = {
-    debugAll: boolean;
-    debugEvents: boolean;
-    debugContext: boolean;
 };
 
 // @public
