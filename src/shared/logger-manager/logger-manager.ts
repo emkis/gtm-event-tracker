@@ -20,9 +20,9 @@ export function createLoggerManager(
   }
 
   function isActionTypeEnabled({ type }: LoggerAction) {
-    const isAllEnabled = () => getConfiguration().logger.debugAll
-    const isContextEnabled = () => getConfiguration().logger.debugContext
-    const isEventsEnabled = () => getConfiguration().logger.debugEvents
+    const isAllEnabled = () => getConfiguration().debugAll
+    const isContextEnabled = () => getConfiguration().debugContext
+    const isEventsEnabled = () => getConfiguration().debugEvents
 
     const validate = (isEnabled: () => boolean): boolean => {
       return isAllEnabled() || isEnabled()

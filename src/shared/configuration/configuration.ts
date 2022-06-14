@@ -8,14 +8,10 @@ export function createConfiguration() {
 
   function defaults(): Configurations {
     return {
-      logger: {
-        debugAll: false,
-        debugEvents: false,
-        debugContext: false,
-      },
-      events: {
-        targetProperty: () => window.dataLayer,
-      },
+      debugAll: false,
+      debugEvents: false,
+      debugContext: false,
+      targetProperty: () => window.dataLayer,
     }
   }
 
