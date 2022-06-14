@@ -1,5 +1,5 @@
-import merge from 'lodash.merge'
 import { throwNoConfigurationProvided } from './configuration-errors'
+import { removeEmptyPropsFromObject } from './configuration-utils'
 import type { Configurations } from './configuration-types'
 import type { PartialDeep } from 'type-fest'
 
@@ -19,10 +19,15 @@ export function createConfiguration() {
     return configurations
   }
 
+  function setConfigurations(configs: object) {
+    const safeConfigValues = removeEmptyPropsFromObject(configs)
+    Object.assign(configurations, safeConfigValues)
+  }
+
   function configure(customConfigs: PartialDeep<Configurations>) {
     const isConfigDefined = Boolean(customConfigs)
     if (!isConfigDefined) throwNoConfigurationProvided()
-    merge(configurations, customConfigs)
+    setConfigurations(customConfigs)
   }
 
   return { get, defaults, configure }
