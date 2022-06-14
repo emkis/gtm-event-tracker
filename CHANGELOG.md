@@ -1,3 +1,5 @@
+# [1.7.0-beta.11](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.10...v1.7.0-beta.11) (2022-06-14)
+
 # [1.7.0-beta.10](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.9...v1.7.0-beta.10) (2022-06-14)
 
 
