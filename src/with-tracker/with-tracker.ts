@@ -1,6 +1,7 @@
-import { dataLayer, EventProperties } from '@/shared/data-layer'
+import { dataLayer } from '@/shared/data-layer'
 import { logEvent } from './with-tracker-logs'
 import type { TrackerContext } from '@/tracker-context'
+import type { EventProperties } from '@/shared/data-layer'
 import type { TrackModule, SubtractEventProperties } from './with-tracker-types'
 
 /**

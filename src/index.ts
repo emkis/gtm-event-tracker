@@ -9,9 +9,9 @@ export type { TrackModule, SubtractEventProperties } from '@/with-tracker'
 export { setLogger } from '@/logger'
 export type { Logger, LoggerAction } from '@/logger'
 
-export { configure } from '@/configuration'
+export { configure } from '@/shared/configuration'
 export type {
   Configurations,
   LoggerConfigurations,
   EventsConfigurations,
-} from '@/configuration'
+} from '@/shared/configuration'

@@ -48,6 +48,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@faker-js/faker": "^7.2.0",
     "@microsoft/api-extractor": "^7.24.2",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
