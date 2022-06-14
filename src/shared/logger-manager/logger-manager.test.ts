@@ -1,21 +1,20 @@
 import { faker } from '@faker-js/faker'
 import { createLoggerManager } from './logger-manager'
-import { Configurations, configuration } from '@/shared/configuration'
+import { configuration } from '@/shared/configuration'
 import type { Logger } from '@/logger'
 
-function makeLoggerManager(configurations?: Configurations) {
-  const mockConfigurations = configurations ?? configuration.defaults()
+function makeLoggerManager(configurations = configuration.defaults()) {
   const mockLogger: Logger = { log: jest.fn().mockName('logger.log') }
 
   const loggerManager = createLoggerManager({
     getLogger: () => mockLogger,
-    configurations: mockConfigurations,
+    configurations,
   })
 
   return {
     loggerManager,
     mockLogger,
-    mockConfigurations,
+    mockConfigurations: configurations,
   }
 }
 
@@ -63,12 +62,10 @@ it('should not log anything with default configurations', () => {
 
 it('should not call logger with invalid log type', () => {
   const { loggerManager, mockLogger } = makeLoggerManager({
-    events: { targetProperty: () => [] },
-    logger: {
-      debugAll: true,
-      debugContext: true,
-      debugEvents: true,
-    },
+    targetProperty: () => [],
+    debugAll: true,
+    debugContext: true,
+    debugEvents: true,
   })
 
   triggerInvalid(loggerManager)
@@ -77,12 +74,10 @@ it('should not call logger with invalid log type', () => {
 
 it('should log everything when debugAll is true', () => {
   const { loggerManager, mockLogger } = makeLoggerManager({
-    events: { targetProperty: () => [] },
-    logger: {
-      debugAll: true,
-      debugContext: false,
-      debugEvents: false,
-    },
+    targetProperty: () => [],
+    debugAll: true,
+    debugContext: false,
+    debugEvents: false,
   })
 
   triggerContextCreated(loggerManager)
@@ -94,12 +89,10 @@ it('should log everything when debugAll is true', () => {
 
 it('should log events only when debugEvents is true', () => {
   const { loggerManager, mockLogger } = makeLoggerManager({
-    events: { targetProperty: () => [] },
-    logger: {
-      debugEvents: true,
-      debugAll: false,
-      debugContext: false,
-    },
+    targetProperty: () => [],
+    debugEvents: true,
+    debugAll: false,
+    debugContext: false,
   })
 
   triggerContextUpdated(loggerManager)
@@ -113,12 +106,10 @@ it('should log events only when debugEvents is true', () => {
 
 it('should log context only when debugContext is true', () => {
   const { loggerManager, mockLogger } = makeLoggerManager({
-    events: { targetProperty: () => [] },
-    logger: {
-      debugContext: true,
-      debugEvents: false,
-      debugAll: false,
-    },
+    targetProperty: () => [],
+    debugContext: true,
+    debugEvents: false,
+    debugAll: false,
   })
 
   triggerContextUpdated(loggerManager)

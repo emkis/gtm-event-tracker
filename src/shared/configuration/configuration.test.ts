@@ -3,14 +3,10 @@ import { InvalidConfigurationError } from '@/shared/error'
 import type { Configurations } from './configuration-types'
 
 const defaultConfigurations = {
-  logger: {
-    debugAll: false,
-    debugEvents: false,
-    debugContext: false,
-  },
-  events: {
-    targetProperty: expect.any(Function),
-  },
+  debugAll: false,
+  debugEvents: false,
+  debugContext: false,
+  targetProperty: expect.any(Function),
 } as const
 
 it('should initialize configuration with default values', () => {
@@ -36,11 +32,9 @@ it('should return the same configuration reference', () => {
   expect(configsA).toBe(configsB)
 
   configuration.configure({
-    logger: {
-      debugEvents: true,
-      debugAll: false,
-      debugContext: false,
-    },
+    debugEvents: true,
+    debugAll: false,
+    debugContext: false,
   })
   const configsC = configuration.get()
   expect(configsC).toBe(configsA)
@@ -67,22 +61,20 @@ it('should not change any configurations', () => {
   configuration.configure({})
   expect(configuration.get()).toEqual(defaultConfigurations)
 
-  configuration.configure({ logger: undefined })
+  configuration.configure({ debugAll: undefined })
   expect(configuration.get()).toEqual(defaultConfigurations)
 
-  configuration.configure({ events: { targetProperty: undefined } })
+  configuration.configure({ targetProperty: undefined })
   expect(configuration.get()).toEqual(defaultConfigurations)
 })
 
 it('should change specific configurations', () => {
   const configuration = createConfiguration()
   const modifiedConfigurations: Partial<Configurations> = {
-    logger: {
-      debugAll: true,
-      debugContext: true,
-      debugEvents: true,
-    },
-    events: { ...defaultConfigurations.events },
+    debugAll: true,
+    debugContext: true,
+    debugEvents: true,
+    targetProperty: defaultConfigurations.targetProperty,
   }
 
   configuration.configure(modifiedConfigurations)
