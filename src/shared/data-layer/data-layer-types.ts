@@ -2,7 +2,7 @@
  * Valid object format for track events properties.
  * @public
  */
-export type EventProperties = Record<string, string | number>
+export type EventProperties = Record<string, string | number | boolean | null>
 
 /**
  * The type-safe and recommended way to interact with the `targetProperty`.
