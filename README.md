@@ -15,3 +15,11 @@ It's a requirement for this package that you have [Google Tag Manager](https://t
 ```bash
 yarn add gtm-event-tracker # or npm install gtm-event-tracker
 ```
+
+
+## Why this library over `dataLayer.push`?
+- Type-safe events with auto-complete
+- Less repetition of similar track events
+- Centralized way to manage "global" required event properties
+- Easy way to debug your track events
+- Server-side compatible
