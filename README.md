@@ -7,3 +7,11 @@
 A tiny, type-safe and scalable solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events. Has a powerful API powered by TypeScript that auto-completes your event properties.
 
 It was designed for applications that need to trigger a lot of track events, it solves common problems like writing similar events multiple times, managing "global" required event properties and debugging track events. It's framework agnostic and configurable, so probably is the only solution you need for your modern web application.
+
+
+## Installation
+It's a requirement for this package that you have [Google Tag Manager](https://tagmanager.google.com) installed already in your application, because it depends on `window.dataLayer` by default. If you use a different `targetProperty` to push your events, you can use the `configure` function to change this behavior.
+
+```bash
+yarn add gtm-event-tracker # or npm install gtm-event-tracker
+```
