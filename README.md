@@ -23,3 +23,9 @@ yarn add gtm-event-tracker # or npm install gtm-event-tracker
 - Centralized way to manage "global" required event properties
 - Easy way to debug your track events
 - Server-side compatible
+
+
+## Server-Side Rendering (SSR)
+This library is SSR compatible, there is only one caveat though. The `targetProperty` isn't available on Server-Side, this means you can't call `trackEvent` function. The reason why is because Google Tag Manager creates the `targetProperty` (`window.dataLayer` by default) only on Client-Side.
+
+If you're using some modern framework such as React or Vue, you need to call the `trackEvent` function on `useEffect` or `onMounted` callback. This way you ensure that track events are being only triggered on Client-Side.
