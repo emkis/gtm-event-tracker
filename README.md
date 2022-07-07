@@ -78,3 +78,148 @@ trackerContext.setProps({ new: 'values' })
 // or both
 trackerContext.setProps({ userId: 'uuid', new: 'values' })
 ```
+
+
+### `withTrackerContext`
+Accepts a tracker context as the first argument and returns functions responsible for triggering the track events and pushing them to the `targetProperty`.
+
+#### Usage
+```ts
+// recommended ✅
+// this Generic will ensure that track events have the same shape always
+type TrackEventProperties = { event: string; pagename?: string }
+withTrackerContext<TrackEventProperties>(trackerContext)
+
+// no recommended
+// without providing a TypeScript Generic with the shape of track events
+withTrackerContext(trackerContext)
+```
+
+#### Track functions
+The return of the `withTrackerContext` function is an object containing all available functions for tracking events.
+
+```ts
+const tracker = withTrackerContext<TrackEventProperties>(trackerContext)
+```
+
+##### `trackEvent`
+It pushes events to the `targetProperty` (`window.dataLayer` by default).
+
+```ts
+// this object should have the required properties declared in TrackEventProperties
+tracker.trackEvent({ event: 'custom_theme_enabled' })
+tracker.trackEvent({ event: 'recommendations_canceled', pagename: 'recommended-for-you' })
+
+// but you can include different properties if it's necessary
+tracker.trackEvent({ event: 'notifications_enabled', channelId: 'j6k-2jf' })
+```
+
+When this function is called an object will be pushed to the `targetProperty`. This object is created combining the tracker context properties and event properties you provide as the first argument. They are combined using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), so you can override the "global" event properties from tracker context in your events if you need to.
+
+**Check out the examples below:**
+
+<details>
+  <summary>Common usage</summary>
+
+  ```ts
+import { createTrackerContext, withTrackerContext } from 'gtm-event-tracker'
+
+type TrackEventProperties = {
+  foo: string
+  bar: string
+  baz: string
+}
+
+const trackerContext = createTrackerContext({ globalProperty: 'from context' })
+const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
+
+trackEvent({ foo: 'AAA', bar: 'BBB', baz: 'CCC' })
+```
+
+Object pushed to the `targetProperty`:
+```json
+{
+  "globalProperty": "from context",
+  "foo": "AAA",
+  "bar": "BBB",
+  "baz": "CCC"
+}
+```
+</details>
+
+<details>
+  <summary>Overriding track context properties</summary>
+
+```ts
+import { createTrackerContext, withTrackerContext } from 'gtm-event-tracker'
+
+type TrackEventProperties = {
+  foo: string
+  bar: string
+  baz: string
+}
+
+const trackerContext = createTrackerContext({ globalProperty: 'from context' })
+const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
+
+trackEvent({
+  globalProperty: 'overwritten in this event',
+  foo: 'DDD',
+  bar: 'EEE',
+  baz: 'FFF',
+})
+```
+
+Object pushed to the `targetProperty`:
+```json
+{
+  "globalProperty": "overwritten in this event",
+  "foo": "DDD",
+  "bar": "EEE",
+  "baz": "FFF"
+}
+```
+</details>
+
+<details>
+  <summary>Adding new properties to specific events</summary>
+
+```ts
+import { createTrackerContext, withTrackerContext } from 'gtm-event-tracker'
+
+type TrackEventProperties = {
+  foo: string
+  bar: string
+  baz: string
+}
+
+const trackerContext = createTrackerContext({ globalProperty: 'from context' })
+const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
+
+trackEvent({
+  foo: 'GGG',
+  bar: 'HHH',
+  baz: 'III',
+  someProperty: 'some property that I will need just for this event',
+  anotherOne: 'you got it',
+})
+```
+
+Object pushed to the `targetProperty`:
+```json
+{
+    "globalProperty": "from context",
+    "foo": "GGG",
+    "bar": "HHH",
+    "baz": "III",
+    "someProperty": "some property that I will need just for this event",
+    "anotherOne": "you got it"
+}
+```
+</details>
+
+<details>
+  <summary>Using TypeScript Generics with annotations</summary>
+
+  ![](/.github/readme/videos/example-withTrackerContext.mp4)
+</details>
