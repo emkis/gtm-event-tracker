@@ -83,14 +83,21 @@ trackerContext.setProps({ userId: 'uuid', new: 'values' })
 Accepts a tracker context as the first argument and returns functions responsible for triggering the track events and pushing them to the `targetProperty`.
 
 #### Usage
+With Typescript (recommended):
 ```ts
-// recommended ✅
-// this Generic will ensure that track events have the same shape always
-type TrackEventProperties = { event: string; pagename?: string }
-withTrackerContext<TrackEventProperties>(trackerContext)
+type TrackEventProperties = {
+  event: string
+  category?: string
+  current_page: string
+  business_context: string
+}
 
-// no recommended
-// without providing a TypeScript Generic with the shape of track events
+// this Generic will ensure that track events have the same contract
+withTrackerContext<TrackEventProperties>(trackerContext)
+```
+
+Without Typescript:
+```ts
 withTrackerContext(trackerContext)
 ```
 
