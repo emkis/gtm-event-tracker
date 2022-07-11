@@ -144,7 +144,7 @@ type TrackEventProperties = {
   baz: string
 }
 
-const trackerContext = createTrackerContext({ globalProperty: 'from context' })
+const trackerContext = createTrackerContext({ global_property: 'from context' })
 const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
 
 trackEvent({ foo: 'AAA', bar: 'BBB', baz: 'CCC' })
@@ -153,7 +153,7 @@ trackEvent({ foo: 'AAA', bar: 'BBB', baz: 'CCC' })
 Object pushed to the `targetProperty`:
 ```json
 {
-  "globalProperty": "from context",
+  "global_property": "from context",
   "foo": "AAA",
   "bar": "BBB",
   "baz": "CCC"
@@ -173,11 +173,11 @@ type TrackEventProperties = {
   baz: string
 }
 
-const trackerContext = createTrackerContext({ globalProperty: 'from context' })
+const trackerContext = createTrackerContext({ global_property: 'from context' })
 const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
 
 trackEvent({
-  globalProperty: 'overwritten in this event',
+  global_property: 'overwritten in this event',
   foo: 'DDD',
   bar: 'EEE',
   baz: 'FFF',
@@ -187,7 +187,7 @@ trackEvent({
 Object pushed to the `targetProperty`:
 ```json
 {
-  "globalProperty": "overwritten in this event",
+  "global_property": "overwritten in this event",
   "foo": "DDD",
   "bar": "EEE",
   "baz": "FFF"
@@ -207,27 +207,27 @@ type TrackEventProperties = {
   baz: string
 }
 
-const trackerContext = createTrackerContext({ globalProperty: 'from context' })
+const trackerContext = createTrackerContext({ global_property: 'from context' })
 const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
 
 trackEvent({
   foo: 'GGG',
   bar: 'HHH',
   baz: 'III',
-  someProperty: 'some property that I will need just for this event',
-  anotherOne: 'you got it',
+  some_property: 'some property that I will need just for this event',
+  another_one: 'you got it',
 })
 ```
 
 Object pushed to the `targetProperty`:
 ```json
 {
-    "globalProperty": "from context",
+    "global_property": "from context",
     "foo": "GGG",
     "bar": "HHH",
     "baz": "III",
-    "someProperty": "some property that I will need just for this event",
-    "anotherOne": "you got it"
+    "some_property": "some property that I will need just for this event",
+    "another_one": "you got it"
 }
 ```
 </details>
@@ -242,8 +242,8 @@ type TrackEventProperties = {
   category: string
 
   // ℹ️ you can create optional properties too
-  currentPage?: string
-  businessContext?: string
+  current_page?: string
+  business_context?: string
 
   // ℹ️ you can add custom descriptions that helps your
   // team to use the correct properties.
@@ -256,18 +256,13 @@ type TrackEventProperties = {
 }
 
 const trackerContext = createTrackerContext()
-
-/**
- * ℹ️ Using the `TrackEventProperties` as a Generic will ensure
- * that track events use the supported format.
- */
 const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
 
 trackEvent({
   event: 'user_photo_updated',
   category: 'settings',
-  businessContext: 'account',
-  currentPage: 'user/settings',
+  business_context: 'account',
+  current_page: 'user/settings',
 })
 ```
 </details>
