@@ -266,3 +266,69 @@ trackEvent({
 })
 ```
 </details>
+
+##### `partialTrackEvent`
+It receives track event properties in the same way as the `trackEvent` function, but all properties are optional here. The return is the `trackEvent` function with these track event properties injected by default. Useful when you need to track a lot of similar events on the same page with multiple repeated properties.
+
+```ts
+const trackAwesomeEvent = tracker.partialTrackEvent(repeatedProperties)
+trackAwesomeEvent(missingRequiredProperties)
+```
+
+Once the returned function is called, the final object will be pushed to the `targetProperty`. This object is also created by combining event properties using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), this means you can override all of them wherever you think is appropriate.
+
+How's the final object is created:
+```ts
+{ ...trackerContextProps, ...repeatedProperties, ...missingRequiredProperties }
+```
+
+**Check out the examples below:**
+
+<details>
+  <summary>TypeScript auto-completion demo</summary>
+
+  ![](/.github/readme/videos/example-withTrackerContext.gif)
+</details>
+
+<details>
+  <summary>Common usage</summary>
+
+```ts
+type TrackEventProperties = {
+  event: string
+  category?: string
+  current_page: string
+  business_context: string
+}
+
+const trackerContext = createTrackerContext({
+  user_type: user.profileType,
+  user_id: user.id,
+  B2B_partner_id: partner.id,
+})
+
+const tracker = withTrackerContext<TrackEventProperties>(trackerContext)
+
+const trackAccountEvent = tracker.partialTrackEvent({
+  current_page: 'account/security',
+  business_context: 'account',
+})
+
+trackAccountEvent({ event: 'security_page_viewed', category: 'views' })
+trackAccountEvent({ event: 'password_changed' })
+trackAccountEvent({ event: 'new_device_authorized' })
+```
+
+First object pushed to the `targetProperty`:
+```json
+{
+  "user_type": "administrator",
+  "user_id": "fancy-uuid",
+  "B2B_partner_id": "fancy-uuid",
+  "current_page": "account/security",
+  "business_context": "account",
+  "event": "security_page_viewed",
+  "category": "views"
+}
+```
+</details>
