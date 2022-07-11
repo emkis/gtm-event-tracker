@@ -4,10 +4,9 @@
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/gtm-event-tracker/latest?style=flat&colorA=000&colorB=000&label=bundle%20size "Bundle Size")
 ![Version](https://img.shields.io/npm/v/gtm-event-tracker?style=flat&colorA=000&colorB=000 "Version")
 
-A tiny, type-safe and scalable solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events. Has a powerful API powered by TypeScript that auto-completes your event properties.
+A tiny, type-safe and scalable solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
 
-It was designed for applications that need to trigger a lot of track events, it solves common problems like writing similar events multiple times, managing "global" required event properties and debugging track events. It's framework agnostic and configurable, so probably is the only solution you need for your modern web application.
-
+It's designed for applications that need to trigger many track events, it solves common problems like writing similar events multiple times, managing "global" required event properties, and debugging track events. It is framework agnostic and configurable, so it probably is the only solution you need for your web application.
 
 ## Installation
 It's a requirement for this package that you have [Google Tag Manager](https://tagmanager.google.com) installed already in your application, because it depends on `window.dataLayer` by default. If you use a different `targetProperty` to push your events, you can use the `configure` function to change this behavior.
