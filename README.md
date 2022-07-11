@@ -36,7 +36,7 @@ It creates a tracker context, which is responsible for centralizing all "global"
 
 > This function accepts shallow objects only. This is a restriction from this library to prevent issues with object references.
 
-#### Initialization
+#### Usage
 ```ts
 // no arguments are allowed
 // you can create a tracker context with no initial properties
@@ -120,7 +120,7 @@ When this function is called an object will be pushed to the `targetProperty`. T
 <details>
   <summary>Common usage</summary>
 
-  ```ts
+```ts
 import { createTrackerContext, withTrackerContext } from 'gtm-event-tracker'
 
 type TrackEventProperties = {
@@ -220,5 +220,39 @@ Object pushed to the `targetProperty`:
 <details>
   <summary>Using TypeScript Generics with annotations</summary>
 
-  ![](/.github/readme/videos/example-withTrackerContext.mp4)
+```ts
+// ℹ️ These are the track event properties we support in this app.
+type TrackEventProperties = {
+  event: string
+  category: string
+
+  // ℹ️ you can create optional properties too
+  currentPage?: string
+  businessContext?: string
+
+  // ℹ️ you can add custom descriptions that helps your
+  // team to use the correct properties.
+
+  /**
+   * This property isn't supported anymore. Use the `currentPage` property instead.
+   * @deprecated
+   */
+  url?: string
+}
+
+const trackerContext = createTrackerContext()
+
+/**
+ * ℹ️ Using the `TrackEventProperties` as a Generic will ensure
+ * that track events use the supported format.
+ */
+const { trackEvent } = withTrackerContext<TrackEventProperties>(trackerContext)
+
+trackEvent({
+  event: 'user_photo_updated',
+  category: 'settings',
+  businessContext: 'account',
+  currentPage: 'user/settings',
+})
+```
 </details>
