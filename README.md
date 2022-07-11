@@ -109,15 +109,23 @@ const tracker = withTrackerContext<TrackEventProperties>(trackerContext)
 ```
 
 ##### `trackEvent`
-It pushes events to the `targetProperty` (`window.dataLayer` by default).
+It pushes events to the `targetProperty` (`window.dataLayer` by default). It receives an object as the first argument, and it must contain all required properties in the type provided as the Generic, which in this case, is the `TrackEventProperties`.
 
 ```ts
-// this object should have the required properties declared in TrackEventProperties
-tracker.trackEvent({ event: 'custom_theme_enabled' })
-tracker.trackEvent({ event: 'recommendations_canceled', pagename: 'recommended-for-you' })
+tracker.trackEvent({
+  event: 'recommended_page_viewed',
+  current_page: 'feed/recommended-for-you',
+  business_context: 'feed',
+  category: 'views',
+})
 
-// but you can include different properties if it's necessary
-tracker.trackEvent({ event: 'notifications_enabled', channelId: 'j6k-2jf' })
+// you can include different properties if you need
+tracker.trackEvent({
+  event: 'notifications_enabled',
+  channel_id: 'jqk-aof',
+  current_page: 'channel/:id',
+  business_context: 'content',
+})
 ```
 
 When this function is called an object will be pushed to the `targetProperty`. This object is created combining the tracker context properties and event properties you provide as the first argument. They are combined using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), so you can override the "global" event properties from tracker context in your events if you need to.
