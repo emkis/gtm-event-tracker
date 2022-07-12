@@ -60,7 +60,7 @@ export type TrackerContextOptions = {
 // @public
 export type TrackModule<CustomEventProperties extends EventProperties> = {
     trackEvent: (eventProps: CustomEventProperties & EventProperties) => void;
-    setRepeatedProps: <RepeatedProps extends Partial<CustomEventProperties>>(repeatedProps: RepeatedProps) => (remainingProps: SubtractEventProperties<CustomEventProperties, RepeatedProps>) => void;
+    partialTrackEvent: <RepeatedProps extends Partial<CustomEventProperties>>(repeatedProps: RepeatedProps) => (remainingProps: SubtractEventProperties<CustomEventProperties, RepeatedProps>) => void;
 };
 
 // @public
