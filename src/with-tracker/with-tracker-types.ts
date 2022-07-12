@@ -42,14 +42,14 @@ export type TrackModule<CustomEventProperties extends EventProperties> = {
    *
    * @param repeatedProps - Properties that you need in multiple events.
    * @example
-   * const trackNewAccount = setRepeatedProps({
+   * const trackNewAccount = partialTrackEvent({
    *   action: 'new account'
    * })
    *
    * trackNewAccount({ category: 'pro plan', lorem: 'ipsum' })
    * trackNewAccount({ category: 'business plan', sit: 'dolor' })
    */
-  setRepeatedProps: <RepeatedProps extends Partial<CustomEventProperties>>(
+  partialTrackEvent: <RepeatedProps extends Partial<CustomEventProperties>>(
     repeatedProps: RepeatedProps
   ) => (
     remainingProps: SubtractEventProperties<

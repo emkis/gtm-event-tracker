@@ -44,26 +44,26 @@ it('should contain all composed properties in the events', () => {
 it('should be able to overwrite context properties in track event', () => {
   const contextProps = { static: 'prop', from: 'context' }
   const { trackEvent } = makeTracker(contextProps)
-  const eventPayloadOverwriter = { id: 'def', from: 'trackEvent' }
-  trackEvent(eventPayloadOverwriter)
+  const eventPayloadOverwritten = { id: 'def', from: 'trackEvent' }
+  trackEvent(eventPayloadOverwritten)
 
   expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(1)
   expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
     ...contextProps,
-    ...eventPayloadOverwriter,
+    ...eventPayloadOverwritten,
   })
 })
 
-it('should return a partial function when setRepeatedProps is called', () => {
-  const { setRepeatedProps } = makeTracker()
-  const result = setRepeatedProps({ greeting: 'eai' })
+it('should return a function when partialTrackEvent is called', () => {
+  const { partialTrackEvent } = makeTracker()
+  const result = partialTrackEvent({ greeting: 'eai' })
   expect(typeof result).toBe('function')
 })
 
 it('should inject repeated props in the events', () => {
   const contextProps = { from: 'context' }
   const tracker = makeTracker(contextProps)
-  const trackCoolEvent = tracker.setRepeatedProps({ isRepeatedProp: 'yes' })
+  const trackCoolEvent = tracker.partialTrackEvent({ isRepeatedProp: 'yes' })
 
   trackCoolEvent({ isFromPartial: 'oh yes' })
   trackCoolEvent({ soCool: 'true' })

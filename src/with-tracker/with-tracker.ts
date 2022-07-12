@@ -18,11 +18,11 @@ import type { TrackModule, SubtractEventProperties } from './with-tracker-types'
  * })
  *
  * // using the tracker context to track events
- * const Tracker = withTrackerContext(appTrackerContext)
+ * const tracker = withTrackerContext(appTrackerContext)
  *
- * Tracker.trackEvent({ foo: 'bar', baz: 'qux', })
+ * tracker.trackEvent({ foo: 'bar', baz: 'qux', })
  *
- * const trackMenuEvent = Tracker.setRepeatedProps({ category: 'menu' })
+ * const trackMenuEvent = tracker.partialTrackEvent({ category: 'menu' })
  * trackMenuEvent({ action: 'log in' })
  * trackMenuEvent({ action: 'log out' })
  */
@@ -36,7 +36,7 @@ export function withTrackerContext<Properties extends EventProperties>({
     logEvent(eventProperties)
   }
 
-  function setRepeatedProps<T extends Partial<Properties>>(defaultProps: T) {
+  function partialTrackEvent<T extends Partial<Properties>>(defaultProps: T) {
     return (remainingProps: SubtractEventProperties<Properties, T>) => {
       trackEvent({
         ...context.value,
@@ -46,5 +46,5 @@ export function withTrackerContext<Properties extends EventProperties>({
     }
   }
 
-  return { trackEvent, setRepeatedProps }
+  return { trackEvent, partialTrackEvent }
 }
