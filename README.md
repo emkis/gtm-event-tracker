@@ -337,6 +337,8 @@ First object pushed to the `targetProperty`:
 ### `setLogger`
 Is a function that allows you to replace globally the default logger used to log track events and context changes. By default, the `window.console` is used.
 
+> The logger is disabled by default, to enable it, use the `configure` function.
+
 #### Usage
 ```ts
 setLogger({
