@@ -332,3 +332,56 @@ First object pushed to the `targetProperty`:
 }
 ```
 </details>
+
+
+### `setLogger`
+Is a function that allows you to replace globally the default logger used to log track events and context changes. By default, the `window.console` is used.
+
+#### Usage
+```ts
+setLogger({
+   log: action => {
+      yourCustomLogger(action)
+   },
+ })
+```
+
+#### Logger actions
+There are different types of log actions, each one of them can be identified by the `type` property in the action object. Each action type has different properties in it's object, because they need different information to give you more context when debugging.
+
+**The available logger action types are:**
+
+<details>
+  <summary>event</summary>
+  It's logged when a tracker event is triggered by the `trackEvent` function.
+
+  | Property | Type | Description |
+  | --- | --- | --- |
+  | event | `string` | The logger action type |
+  | properties | `object` | All properties included in this track event  |
+  | contextName | `string?` | The name of the tracker context which is being used for this track event |
+
+</details>
+
+<details>
+  <summary>context-created</summary>
+  It's logged when a tracker context is created.
+
+  | Property | Type | Description |
+  | --- | --- | --- |
+  | event | `string` | The logger action type |
+  | properties | `object` | All initial properties provided on the `createTrackerContext` function |
+  | contextName | `string?` | The name of the tracker context which is being updated |
+</details>
+
+<details>
+  <summary>context-updated</summary>
+  It's logged when a tracker context is updated.
+
+  | Property | Type | Description |
+  | --- | --- | --- |
+  | event | `string` | The logger action type |
+  | previousProperties | `object` | Previous properties in this tracker context, before calling `setProps`  |
+  | currentProperties | `object` | Current properties in this tracker context, after calling `setProps` |
+  | contextName | `string?` | The name of the tracker context created |
+</details>
