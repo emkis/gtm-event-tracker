@@ -356,34 +356,95 @@ There are different types of log actions, each one of them can be identified by 
 <details>
   <summary>event</summary>
   It's logged when a tracker event is triggered by the `trackEvent` function.
+  <br><br>
 
-  | Property | Type | Description |
+  **Output object format:**
+  | Object key | Type | Description |
   | --- | --- | --- |
-  | event | `string` | The logger action type |
+  | type | `string` | The logger action type |
   | properties | `object` | All properties included in this track event  |
   | contextName | `string?` | The name of the tracker context which is being used for this track event |
 
+  **Example:**
+  ```ts
+  const context = createTrackerContext({ foo: 'bar' }, { name: 'main-context' })
+  const tracker = withTrackerContext(context)
+  tracker.trackEvent({ lorem: 'ipsum' }) // it's triggered here
+  ```
+
+  **Logger output:**
+  ```json
+  {
+    "type": "event",
+    "contextName": "main-context",
+    "properties": {
+      "foo": "bar",
+      "lorem": "ipsum"
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>context-created</summary>
   It's logged when a tracker context is created.
+  <br><br>
 
-  | Property | Type | Description |
+  **Output object format:**
+  | Object key | Type | Description |
   | --- | --- | --- |
-  | event | `string` | The logger action type |
+  | type | `string` | The logger action type |
   | properties | `object` | All initial properties provided on the `createTrackerContext` function |
   | contextName | `string?` | The name of the tracker context which is being updated |
+
+  **Example:**
+  ```ts
+  createTrackerContext({ foo: 'bar', oi: 'tchau' }, { name: 'sample-context' }) // it's triggered here
+  ```
+
+  **Logger output:**
+  ```json
+  {
+    "type": "context-created",
+    "contextName": "sample-context",
+    "properties": {
+      "foo": "bar",
+      "oi": "tchau"
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>context-updated</summary>
   It's logged when a tracker context is updated.
+  <br><br>
 
-  | Property | Type | Description |
+  **Output object format:**
+  | Object key | Type | Description |
   | --- | --- | --- |
-  | event | `string` | The logger action type |
-  | previousProperties | `object` | Previous properties in this tracker context, before calling `setProps`  |
-  | currentProperties | `object` | Current properties in this tracker context, after calling `setProps` |
+  | type | `string` | The logger action type |
+  | previousProperties | `object` | Previous properties within this tracker context, before calling `setProps`  |
+  | currentProperties | `object` | Current properties within this tracker context, after calling `setProps` |
   | contextName | `string?` | The name of the tracker context created |
+
+  **Example:**
+  ```ts
+  const context = createTrackerContext({ user: null, cool: false })
+  context.setProps({ user: 'jf9hd0' })  // it's triggered here
+  ```
+
+  **Logger output:**
+  ```json
+  {
+    "type": "context-updated",
+    "previousProperties": {
+      "user": null,
+      "cool": false
+    },
+    "currentProperties": {
+      "user": "jf9hd0"
+    }
+  }
+  ```
 </details>
