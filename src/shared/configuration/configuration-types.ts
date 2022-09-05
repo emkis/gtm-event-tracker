@@ -6,15 +6,15 @@ import type { EventProperties } from '@/shared/data-layer'
  */
 export type Configurations = {
   /**
-   * It logs everything, is equivalent of setting all `debug` options to `true`.
+   * Enables logs for everything, is equivalent of setting all `debug*` options to `true`.
    */
   debugAll: boolean
   /**
-   * It logs events. These events are logged when you call `trackEvent`.
+   * Enables logging track events, these events are logged when the `trackEvent` function is called.
    */
   debugEvents: boolean
   /**
-   * It logs context operations.
+   * Enables logs for context operations.
    *
    * These events are logged when you call `createTrackerContext`,
    * and when you call `setProps` in a created tracker context.
