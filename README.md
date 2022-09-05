@@ -448,3 +448,24 @@ There are different types of log actions, each one of them can be identified by 
   }
   ```
 </details>
+
+
+### `configure`
+It's the function responsible for configuring/customizing this package. Each option is responsible for one specific thing, so you can read the full list below.
+
+#### Usage
+```ts
+configure({
+  debugAll: false,
+  debugEvents: true,
+  targetProperty: () => myCustomDataLayer
+})
+```
+
+#### Available options
+  | Object key | Type | Default value | Description |
+  | --- | --- | --- | --- |
+  | debugEvents | `boolean` | `false` | Enables logging track events, these events are logged when the `trackEvent` function is called. |
+  | debugContext | `boolean` | `false` | Enables logs for context operations. These events are logged when you call `createTrackerContext`, and when you call `setProps` in a created tracker context. |
+  | debugAll | `boolean` | `false` | Enables logs for everything, is equivalent of setting all `debug*` options to `true`. |
+  | targetProperty | `function` | `() => window.dataLayer` | This is the function that returns the array which the events are going to be pushed into. You should change it if you don't use the default `window.dataLayer`. |
