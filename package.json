@@ -6,7 +6,7 @@
   },
   "license": "MIT",
   "version": "1.7.0-beta.12",
-  "description": "A type-safe, reusable, and flexible way for triggering Google Tag Manager track events.",
+  "description": "A tiny, type-safe and scalable solution for triggering Google Tag Manager track events.",
   "keywords": [
     "gtm",
     "tracking",
@@ -53,6 +53,7 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.4",
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/jest": "^28.1.4",

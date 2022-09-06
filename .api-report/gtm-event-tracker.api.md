@@ -19,7 +19,7 @@ export const configure: (customConfigs: Partial<Configurations>) => void;
 export function createTrackerContext(initialProps?: EventProperties, options?: TrackerContextOptions): TrackerContext;
 
 // @public
-export type EventProperties = Record<string, string | number>;
+export type EventProperties = Record<string, string | number | boolean | null>;
 
 // @public
 export type Logger = {
@@ -49,7 +49,7 @@ export type SubtractEventProperties<OriginalProps, PropsToSubtract> = Omit<Origi
 
 // @public
 export type TrackerContext = Readonly<{
-    setProps: (props: EventProperties) => void;
+    setProps(props: EventProperties): void;
 }>;
 
 // @public

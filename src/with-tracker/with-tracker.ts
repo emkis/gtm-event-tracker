@@ -5,8 +5,8 @@ import type { EventProperties } from '@/shared/data-layer'
 import type { TrackModule, SubtractEventProperties } from './with-tracker-types'
 
 /**
- * Accepts a context object returned from `createTrackerContext` function,
- * and returns the functions responsible for triggering the track events.
+ * Accepts a tracker context as the first argument and returns
+ * functions responsible for triggering the track events.
  *
  * @param trackerContext - The tracker context object.
  *
