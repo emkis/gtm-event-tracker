@@ -1,3 +1,11 @@
+# [1.7.0-beta.13](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.12...v1.7.0-beta.13) (2022-09-06)
+
+
+### Features
+
+* add @semantic-release/github for handling github releases ([cad3b88](https://github.com/emkis/gtm-event-tracker/commit/cad3b8838b6f8118e8c4a2e5e7c976b1773ca2f3))
+* **shared:** allow JSON Primitives as values ([3665870](https://github.com/emkis/gtm-event-tracker/commit/36658703fe7baf44bfc6fe849515c1d153c7565e))
+
 # [1.7.0-beta.12](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.11...v1.7.0-beta.12) (2022-07-12)
 
 # [1.7.0-beta.11](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.10...v1.7.0-beta.11) (2022-06-14)
