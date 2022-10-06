@@ -17,15 +17,15 @@ yarn add gtm-event-tracker # or npm install gtm-event-tracker
 
 
 ## Why this library over `dataLayer.push`?
-- Type-safe events with auto-complete
+- Type-safe events
 - Less repetition of similar track events
-- Centralized way to manage "global" required event properties
+- Centralized way to manage "global" event properties
 - Easy way to debug your track events
 - Server-side compatible
 
 
 ## Server-Side Rendering (SSR)
-This library is SSR compatible, there is only one caveat though. The `targetProperty` isn't available on Server-Side, this means you can't call `trackEvent` function. The reason why is because Google Tag Manager creates the `targetProperty` (`window.dataLayer` by default) only on Client-Side.
+This library is SSR compatible, there is only one caveat though. The `targetProperty` isn't available on Server-Side, this means you can't call the `trackEvent` function. The reason why is because Google Tag Manager creates the `targetProperty` (`window.dataLayer` by default) only on Client-Side.
 
 If you're using some modern framework such as React or Vue, you need to call the `trackEvent` function on `useEffect` or `onMounted` callback. This way you ensure that track events are being only triggered on Client-Side.
 
@@ -109,7 +109,7 @@ const tracker = withTrackerContext<TrackEventProperties>(trackerContext)
 ```
 
 ##### `trackEvent`
-It pushes events to the `targetProperty` (`window.dataLayer` by default). It receives an object as the first argument, and it must contain all required properties in the type provided as the Generic, which in this case, is the `TrackEventProperties`.
+It pushes events to the `targetProperty` (`window.dataLayer` by default). It receives an object as the first argument, and it must contain all required properties in the type provided as the Generic (`TrackEventProperties` in this case).
 
 ```ts
 tracker.trackEvent({
@@ -119,16 +119,16 @@ tracker.trackEvent({
   category: 'views',
 })
 
-// you can include different properties if you need
+// you can add different properties if you need
 tracker.trackEvent({
   event: 'notifications_enabled',
-  channel_id: 'jqk-aof',
+  channel_id: 'jqk-aof', // this property was not declared in TrackEventProperties type
   current_page: 'channel/:id',
   business_context: 'content',
 })
 ```
 
-When this function is called an object will be pushed to the `targetProperty`. This object is created combining the tracker context properties and event properties you provide as the first argument. They are combined using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), so you can override the "global" event properties from tracker context in your events if you need to.
+When this function is called an object will be pushed to the `targetProperty`. This object is created combining the tracker context properties and these event properties you provide. They are combined using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), so you can override the "global" event properties from tracker context in your events if you need to.
 
 **Check out the examples below:**
 
