@@ -5,7 +5,7 @@
 
 A tiny, type-safe and zero-dependency solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
 
-It's designed for applications that need to trigger many track events, it solves common problems like writing similar events multiple times, managing "global" required event properties, and debugging track events. It is framework agnostic and configurable, so it probably is the only solution you need for your web application.
+It's designed for applications that need to trigger a lot of track events, and it solves common problems like writing similar events multiple times, managing "global" event properties, and debugging track events. This solution is framework agnostic and configurable, so it's probably the only solution you need for your web application for triggering track events.
 
 
 ## Installation
