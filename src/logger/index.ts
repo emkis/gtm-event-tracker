@@ -1,2 +1,2 @@
 export { getLogger, setLogger } from './logger'
-export type { Logger, LoggerAction } from './types'
+export type { Logger, LoggerAction } from './logger-types'

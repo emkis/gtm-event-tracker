@@ -1,4 +1,4 @@
-name: Release package on NPM
+name: Upload coverage report
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - beta
 
 jobs:
-  release:
-    name: Release
+  upload:
+    name: Upload
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,14 +29,11 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Build
-        run: yarn build
+      - name: Generate coverage report
+        run: yarn test:unit:coverage
 
-      - name: Produce declaration files
-        run: yarn api-report
-
-      - name: Release
-        run: yarn semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./coverage
+          fail_ci_if_error: true

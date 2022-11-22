@@ -1,4 +1,4 @@
-import type { EventProperties } from '../data-layer'
+import type { EventProperties } from '@/shared/data-layer'
 
 /**
  * Options for customizing the Tracker Context.
@@ -6,15 +6,9 @@ import type { EventProperties } from '../data-layer'
  */
 export type TrackerContextOptions = {
   /**
-   * Will log every interaction with this context, such as:
-   * Context creation, Context updated, and Triggered events.
-   */
-  debug?: boolean
-
-  /**
-   * The name for this context.
+   * The name of this tracker context that is used by the Logger.
    *
-   * It can be helpful when you are using the Logger and your application has more than one context.
+   * Is only useful if your application has more than one tracker context, and you want to be able to identify them by their names.
    */
   name?: string
 }
@@ -34,13 +28,16 @@ export type TrackerContext = Readonly<{
   }
 
   /**
-   * Sets context properties.
+   * Updates the value of this tracker context.
    *
-   * It could be used to set or update properties in this context.
+   * You have full control of the values of this tracker context with
+   * this function, you  can change them completely. After this change,
+   * all new track events that use this tracker context
+   * with `withTrackerContext` will contain the updated data.
    * @public
    * @example
    * const context = createTrackerContext({ userId: 'not defined' })
    * context.setProps({ userId: '2f9kfo7', foo: 'bar' })
    */
-  setProps: (props: EventProperties) => void
+  setProps(props: EventProperties): void
 }>

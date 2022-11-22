@@ -5,21 +5,31 @@
 ```ts
 
 // @public
+export type Configurations = {
+    debugAll: boolean;
+    debugEvents: boolean;
+    debugContext: boolean;
+    targetProperty: () => EventProperties[];
+};
+
+// @public
+export const configure: (customConfigs: Partial<Configurations>) => void;
+
+// @public
 export function createTrackerContext(initialProps?: EventProperties, options?: TrackerContextOptions): TrackerContext;
 
 // @public
-export type EventProperties = Record<string, string | number>;
+export type EventProperties = Record<string, string | number | boolean | null>;
 
 // @public
 export type Logger = {
     log: (action: LoggerAction) => void;
-    warn: (action: LoggerAction) => void;
-    error: (action: LoggerAction) => void;
 };
 
 // @public
 export type LoggerAction = {
     type: 'event';
+    contextName?: string;
     properties: EventProperties;
 } | {
     type: 'context-created';
@@ -40,19 +50,18 @@ export type SubtractEventProperties<OriginalProps, PropsToSubtract> = Omit<Origi
 
 // @public
 export type TrackerContext = Readonly<{
-    setProps: (props: EventProperties) => void;
+    setProps(props: EventProperties): void;
 }>;
 
 // @public
 export type TrackerContextOptions = {
-    debug?: boolean;
     name?: string;
 };
 
 // @public
 export type TrackModule<CustomEventProperties extends EventProperties> = {
     trackEvent: (eventProps: CustomEventProperties & EventProperties) => void;
-    setRepeatedProps: <RepeatedProps extends Partial<CustomEventProperties>>(repeatedProps: RepeatedProps) => (remainingProps: SubtractEventProperties<CustomEventProperties, RepeatedProps>) => void;
+    partialTrackEvent: <RepeatedProps extends Partial<CustomEventProperties>>(repeatedProps: RepeatedProps) => (remainingProps: SubtractEventProperties<CustomEventProperties, RepeatedProps>) => void;
 };
 
 // @public

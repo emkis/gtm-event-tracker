@@ -1,37 +1,20 @@
-import { createTrackerContext } from '../tracker-context'
+import { createTrackerContext, TrackerContextOptions } from '@/tracker-context'
 import { withTrackerContext } from './with-tracker'
-import { WarningError } from '../error'
-import type { EventProperties } from '../data-layer'
+import { dataLayer, EventProperties } from '@/shared/data-layer'
+import { logEvent } from './with-tracker-logs'
 
-function makeTracker(props?: EventProperties) {
-  const context = createTrackerContext(props)
+jest.mock('@/shared/data-layer')
+jest.mock('./with-tracker-logs')
+const mockedDataLayer = jest.mocked(dataLayer)
+const mockedLogEvent = jest.mocked(logEvent)
+
+function makeTracker(
+  props?: EventProperties,
+  options: TrackerContextOptions = {}
+) {
+  const context = createTrackerContext(props, { name: options.name })
   return withTrackerContext(context)
 }
-
-beforeEach(() => {
-  window.dataLayer = []
-})
-
-it('should throw error if window.dataLayer is not available', () => {
-  // @ts-expect-error deleting for purposes of this test
-  delete window.dataLayer
-
-  const tracker = makeTracker()
-  const trackEmptyEvent = () => tracker.trackEvent({})
-
-  expect(trackEmptyEvent).toThrowError(WarningError)
-  expect(trackEmptyEvent).toThrowError('The targetProperty is not defined.')
-})
-
-it('should throw error if window.dataLayer is not an array', () => {
-  // @ts-expect-error changing for purposes of this test
-  window.dataLayer = {}
-  const tracker = makeTracker()
-  const trackEmptyEvent = () => tracker.trackEvent({})
-
-  expect(trackEmptyEvent).toThrowError(WarningError)
-  expect(trackEmptyEvent).toThrowError('The targetProperty is not an array.')
-})
 
 it('should contain all composed properties in the events', () => {
   const contextProps = { foo: 'bar', baz: 'quz' }
@@ -52,55 +35,79 @@ it('should contain all composed properties in the events', () => {
   trackEvent(eventPropertiesB)
   trackEvent({})
 
-  const [eventPayloadA, eventPayloadB, eventPayloadC] = window.dataLayer
-
-  expect(window.dataLayer).toHaveLength(3)
-  expect(eventPayloadA).toStrictEqual({ ...contextProps, ...eventPropertiesA })
-  expect(eventPayloadB).toStrictEqual({ ...contextProps, ...eventPropertiesB })
-  expect(eventPayloadC).toStrictEqual(contextProps)
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
+    ...contextProps,
+    ...eventPropertiesA,
+  })
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(2, {
+    ...contextProps,
+    ...eventPropertiesB,
+  })
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(3, contextProps)
+  expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(3)
 })
 
 it('should be able to overwrite context properties in track event', () => {
   const contextProps = { static: 'prop', from: 'context' }
   const { trackEvent } = makeTracker(contextProps)
+  const eventPayloadOverwritten = { id: 'def', from: 'trackEvent' }
+  trackEvent(eventPayloadOverwritten)
 
-  trackEvent({ foo: 'bar', from: 'trackEvent' })
-  const [eventPayload] = window.dataLayer
-
-  expect(window.dataLayer).toHaveLength(1)
-  expect(eventPayload).toStrictEqual({
-    static: 'prop',
-    from: 'trackEvent',
-    foo: 'bar',
+  expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(1)
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
+    ...contextProps,
+    ...eventPayloadOverwritten,
   })
 })
 
-it('should return a partial function when setRepeatedProps is called', () => {
-  const { setRepeatedProps } = makeTracker()
-  const result = setRepeatedProps({ greeting: 'eai' })
+it('should return a function when partialTrackEvent is called', () => {
+  const { partialTrackEvent } = makeTracker()
+  const result = partialTrackEvent({ greeting: 'eai' })
   expect(typeof result).toBe('function')
 })
 
 it('should inject repeated props in the events', () => {
   const contextProps = { from: 'context' }
   const tracker = makeTracker(contextProps)
-  const trackCoolEvent = tracker.setRepeatedProps({ isRepeatedProp: 'yes' })
+  const trackCoolEvent = tracker.partialTrackEvent({ isRepeatedProp: 'yes' })
 
   trackCoolEvent({ isFromPartial: 'oh yes' })
   trackCoolEvent({ soCool: 'true' })
   tracker.trackEvent({ isAlone: 'true' })
-  const [coolPayloadA, coolPayloadB, alonePayload] = window.dataLayer
 
-  expect(coolPayloadA).toStrictEqual({
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(1, {
     from: 'context',
     isRepeatedProp: 'yes',
     isFromPartial: 'oh yes',
   })
-  expect(coolPayloadB).toStrictEqual({
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(2, {
     from: 'context',
     isRepeatedProp: 'yes',
     soCool: 'true',
   })
-  expect(alonePayload).toStrictEqual({ from: 'context', isAlone: 'true' })
-  expect(window.dataLayer).toHaveLength(3)
+  expect(mockedDataLayer.addEvent).toHaveBeenNthCalledWith(3, {
+    from: 'context',
+    isAlone: 'true',
+  })
+  expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(3)
+})
+
+it('should call the logger function when an event is triggered', () => {
+  const trackerWithoutName = makeTracker()
+  trackerWithoutName.trackEvent({ event: 'triggering 1st event' })
+
+  const trackerWithName = makeTracker({ from: 'context' }, { name: 'sutjeska' })
+  trackerWithName.trackEvent({ event: 'triggering 2nd event' })
+
+  expect(mockedLogEvent).toHaveBeenNthCalledWith(1, {
+    contextName: undefined,
+    properties: { event: 'triggering 1st event' },
+  })
+
+  expect(mockedLogEvent).toHaveBeenNthCalledWith(2, {
+    contextName: 'sutjeska',
+    properties: { from: 'context', event: 'triggering 2nd event' },
+  })
+
+  expect(mockedLogEvent).toBeCalledTimes(2)
 })

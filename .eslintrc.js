@@ -23,21 +23,32 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-params': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-non-null-assertion': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+    },
   },
   overrides: [
     {
-      files: ['**/*.spec.ts', '**/*.test.ts'],
+      files: ['**/*.test.ts'],
       env: { jest: true, node: true },
+      rules: {
+        'import/first': 'off',
+      },
     },
   ],
   ignorePatterns: [
     '**/*/node_modules/*',
     '/dist',
+    '/dist-types',
     '/temp',
     '/storage',
     '/examples',
+    '/coverage',
   ],
 }

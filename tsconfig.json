@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "commonjs",
-    "sourceMap": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "declaration": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -12,14 +14,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
+    "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "./dist-types",
     "stripInternal": true,
     "baseUrl": ".",
     "paths": {
-      "@mocks/*": ["./src/__mocks__/*"]
+      "@/*": ["src/*"]
     },
     "types": [
       "jest",
@@ -30,9 +32,9 @@
     "src"
   ],
   "exclude": [
-    "node_modules",
     "**/node_modules/*",
-    "dist",
-    "build"
+    "/dist",
+    "/dist-types",
+    "/build",
   ]
 }

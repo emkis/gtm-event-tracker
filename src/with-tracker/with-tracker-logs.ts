@@ -1,7 +1,12 @@
-import type { EventProperties } from '../data-layer'
-import { getLogger } from '../logger'
+import type { EventProperties } from '@/shared/data-layer'
+import { loggerManager } from '@/shared/logger-manager'
 
-export function logEvent(properties: EventProperties) {
-  const logger = getLogger()
-  logger.log({ type: 'event', properties })
+type LogEventOptions = {
+  properties: EventProperties
+  contextName?: string
+}
+
+export function logEvent(options: LogEventOptions) {
+  const { properties, contextName } = options
+  loggerManager.log({ type: 'event', properties, contextName })
 }

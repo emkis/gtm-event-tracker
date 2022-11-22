@@ -1,12 +1,15 @@
-import { EventProperties } from '../data-layer'
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { EventProperties } from '@/shared/data-layer'
 
 /**
  * Available types of log actions.
  * @public
  */
 export type LoggerAction =
-  | { type: 'event'; properties: EventProperties }
+  | {
+      type: 'event'
+      contextName?: string
+      properties: EventProperties
+    }
   | {
       type: 'context-created'
       contextName?: string
@@ -25,8 +28,6 @@ export type LoggerAction =
  */
 export type Logger = {
   log: (action: LoggerAction) => void
-  warn: (action: LoggerAction) => void
-  error: (action: LoggerAction) => void
 }
 
 export type LoggerFunctions = Readonly<{

@@ -1,23 +1,15 @@
-import type { LoggerFunctions, Logger } from './types'
+import type { LoggerFunctions, Logger } from './logger-types'
 
-type LoggerOptions = {
+type LoggerOptions = Partial<{
   logger: Logger
-  isEnabled?: boolean
-}
+}>
 
-export const defaultLogger: Logger = console
-const disabledLogger: Logger = {
-  log: () => null,
-  warn: () => null,
-  error: () => null,
-}
-
-export function createLogger(options: LoggerOptions): LoggerFunctions {
-  const isLogsEnabled = options.isEnabled ?? false
-  let logger: Logger = options.logger
+export function createLogger(options: LoggerOptions = {}): LoggerFunctions {
+  const defaultLogger: Logger = console
+  let logger: Logger = options.logger ?? defaultLogger
 
   function getLogger() {
-    return isLogsEnabled ? logger : disabledLogger
+    return logger
   }
 
   function setLogger(targetLogger: Logger) {
@@ -27,7 +19,7 @@ export function createLogger(options: LoggerOptions): LoggerFunctions {
   return { getLogger, setLogger }
 }
 
-const loggerFunctions = createLogger({ logger: defaultLogger })
+const loggerFunctions = createLogger()
 
 /**
  * Sets a custom logger.
