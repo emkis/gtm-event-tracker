@@ -31,9 +31,10 @@ export function withTrackerContext<Properties extends EventProperties>({
 }: TrackerContext): TrackModule<Properties> {
   function trackEvent(eventProps: Properties) {
     const eventProperties = { ...context.value, ...eventProps }
+    const contextName = context.options.name
 
     dataLayer.addEvent(eventProperties)
-    logEvent(eventProperties)
+    logEvent({ properties: eventProperties, contextName })
   }
 
   function partialTrackEvent<T extends Partial<Properties>>(defaultProps: T) {
