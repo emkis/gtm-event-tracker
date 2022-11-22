@@ -1,3 +1,10 @@
+# [1.7.0-beta.14](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.13...v1.7.0-beta.14) (2022-11-22)
+
+
+### Features
+
+* **with-tracker:** add contextName to event log ([d79b056](https://github.com/emkis/gtm-event-tracker/commit/d79b056915dcec71feec1edf90e160caae9905e8))
+
 # [1.7.0-beta.13](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.12...v1.7.0-beta.13) (2022-09-06)
 
 
