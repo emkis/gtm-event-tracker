@@ -1,3 +1,31 @@
+# [1.7.0](https://github.com/emkis/gtm-event-tracker/compare/v1.6.0...v1.7.0) (2022-11-22)
+
+
+### Bug Fixes
+
+* **configuration:** make targetProperty a function ([cebee44](https://github.com/emkis/gtm-event-tracker/commit/cebee44a414a403b6dca5f7decc6f0d12528ff90))
+* **configuration:** make targetProperty a function ([c832bc9](https://github.com/emkis/gtm-event-tracker/commit/c832bc9582921c622b59a6761cc143ae42abfd1d))
+* **data-layer:** ensure targetProperty is truthy ([9ceb078](https://github.com/emkis/gtm-event-tracker/commit/9ceb0782372d748cf1a234d66c921723ec54c8c0))
+
+
+### Features
+
+* add @semantic-release/github for handling github releases ([cad3b88](https://github.com/emkis/gtm-event-tracker/commit/cad3b8838b6f8118e8c4a2e5e7c976b1773ca2f3))
+* add logger manager for handling log rules ([1416e5b](https://github.com/emkis/gtm-event-tracker/commit/1416e5bf8afc35841ded541eebb65dd101329b12))
+* **configuration:** add base types ([8dac88c](https://github.com/emkis/gtm-event-tracker/commit/8dac88cf841ff728dc876f7a6c65ac313e136dcc))
+* **configuration:** add configuration module ([945534d](https://github.com/emkis/gtm-event-tracker/commit/945534d85d0c312277ade33f9c53845f3831f287)), closes [#19](https://github.com/emkis/gtm-event-tracker/issues/19)
+* **configuration:** add events default options ([d1e5c9b](https://github.com/emkis/gtm-event-tracker/commit/d1e5c9b157ff6fc2521efa41538223358af8dfd7))
+* **configuration:** add events options ([f6a1c12](https://github.com/emkis/gtm-event-tracker/commit/f6a1c12ba0bbd3bde940c6ee75daf673b0a5773f))
+* **configuration:** add feature types ([eec1ac1](https://github.com/emkis/gtm-event-tracker/commit/eec1ac1c2d0b175dd3b478fb9f3bdbae57eb6839))
+* **configuration:** add no config provided error ([281fa22](https://github.com/emkis/gtm-event-tracker/commit/281fa220cb7860b021e47fead72a1a3b41965a21))
+* **configuration:** export feature ([af0e451](https://github.com/emkis/gtm-event-tracker/commit/af0e451b0f29e6437a917b3ce1b112db2c02f89d))
+* **data-layer:** get targetProperty from configuration ([99fd7dc](https://github.com/emkis/gtm-event-tracker/commit/99fd7dcb643e16cdcfdc9d5e19cf005a655b5735))
+* **error:** add new error ([47e20ea](https://github.com/emkis/gtm-event-tracker/commit/47e20ea7d07962717678de54bac57277cb547ba0))
+* export type EventsConfigurations ([fcd8e10](https://github.com/emkis/gtm-event-tracker/commit/fcd8e10bbea0efa0591dba2aefb01e5cd7839cb0))
+* **rollup:** add transpilation and minification with esbuild ([b4cd353](https://github.com/emkis/gtm-event-tracker/commit/b4cd3537784b9439089e2584fe0693afe58997e0))
+* **shared:** allow JSON Primitives as values ([3665870](https://github.com/emkis/gtm-event-tracker/commit/36658703fe7baf44bfc6fe849515c1d153c7565e))
+* **with-tracker:** add contextName to event log ([d79b056](https://github.com/emkis/gtm-event-tracker/commit/d79b056915dcec71feec1edf90e160caae9905e8))
+
 # [1.7.0-beta.14](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0-beta.13...v1.7.0-beta.14) (2022-11-22)
 
 
