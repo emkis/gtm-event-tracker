@@ -1,12 +1,18 @@
-import { createTrackerContext } from '@/tracker-context'
+import { createTrackerContext, TrackerContextOptions } from '@/tracker-context'
 import { withTrackerContext } from './with-tracker'
 import { dataLayer, EventProperties } from '@/shared/data-layer'
+import { logEvent } from './with-tracker-logs'
 
 jest.mock('@/shared/data-layer')
+jest.mock('./with-tracker-logs')
 const mockedDataLayer = jest.mocked(dataLayer)
+const mockedLogEvent = jest.mocked(logEvent)
 
-function makeTracker(props?: EventProperties) {
-  const context = createTrackerContext(props)
+function makeTracker(
+  props?: EventProperties,
+  options: TrackerContextOptions = {}
+) {
+  const context = createTrackerContext(props, { name: options.name })
   return withTrackerContext(context)
 }
 
@@ -84,4 +90,24 @@ it('should inject repeated props in the events', () => {
     isAlone: 'true',
   })
   expect(mockedDataLayer.addEvent).toHaveBeenCalledTimes(3)
+})
+
+it('should call the logger function when an event is triggered', () => {
+  const trackerWithoutName = makeTracker()
+  trackerWithoutName.trackEvent({ event: 'triggering 1st event' })
+
+  const trackerWithName = makeTracker({ from: 'context' }, { name: 'sutjeska' })
+  trackerWithName.trackEvent({ event: 'triggering 2nd event' })
+
+  expect(mockedLogEvent).toHaveBeenNthCalledWith(1, {
+    contextName: undefined,
+    properties: { event: 'triggering 1st event' },
+  })
+
+  expect(mockedLogEvent).toHaveBeenNthCalledWith(2, {
+    contextName: 'sutjeska',
+    properties: { from: 'context', event: 'triggering 2nd event' },
+  })
+
+  expect(mockedLogEvent).toBeCalledTimes(2)
 })

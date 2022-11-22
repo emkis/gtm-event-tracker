@@ -29,6 +29,7 @@ export type Logger = {
 // @public
 export type LoggerAction = {
     type: 'event';
+    contextName?: string;
     properties: EventProperties;
 } | {
     type: 'context-created';

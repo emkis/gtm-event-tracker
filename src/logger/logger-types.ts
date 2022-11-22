@@ -5,7 +5,11 @@ import type { EventProperties } from '@/shared/data-layer'
  * @public
  */
 export type LoggerAction =
-  | { type: 'event'; properties: EventProperties }
+  | {
+      type: 'event'
+      contextName?: string
+      properties: EventProperties
+    }
   | {
       type: 'context-created'
       contextName?: string
