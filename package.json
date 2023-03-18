@@ -56,7 +56,7 @@
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
     "@semantic-release/release-notes-generator": "^10.0.3",
-    "@types/jest": "^28.1.4",
+    "@types/jest": "^29.5.0",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
     "esbuild": "^0.14.49",
@@ -69,8 +69,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
-    "jest": "^28.1.2",
-    "jest-environment-jsdom": "^28.1.2",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4",
@@ -81,6 +81,6 @@
     "rollup-plugin-size": "^0.2.2",
     "semantic-release": "^19.0.5",
     "tsc-alias": "^1.8.3",
-    "typescript": "^4.9.3"
+    "typescript": "^5.0.2"
   }
 }
