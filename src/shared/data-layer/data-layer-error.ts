@@ -1,7 +1,7 @@
-import { WarningError } from '@/shared/error'
+import { EventTrackerError } from '@/shared/error'
 
 export function throwIsServer() {
-  throw new WarningError(
+  throw new EventTrackerError(
     'Triggering events is not possible on server-side.' +
       '\n\n' +
       'Make sure to only trigger events after your app is running on the client-side.'
@@ -9,7 +9,7 @@ export function throwIsServer() {
 }
 
 export function throwIsNotDefined() {
-  throw new WarningError(
+  throw new EventTrackerError(
     'The targetProperty is not defined.' +
       '\n\n' +
       `Make sure you didn't forget to add Google Tag Manager's script in your application.` +
@@ -19,7 +19,7 @@ export function throwIsNotDefined() {
 }
 
 export function throwIsNotArray() {
-  throw new WarningError(
+  throw new EventTrackerError(
     'The targetProperty is not an array.' +
       '\n\n' +
       `Either you didn't installed Google Tag Manager correctly or you configured the targetProperty incorrectly.`

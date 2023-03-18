@@ -1,7 +1,7 @@
-import { InvalidConfigurationError } from '@/shared/error'
+import { EventTrackerError } from '@/shared/error'
 
 export function throwNoConfigurationProvided() {
-  throw new InvalidConfigurationError(
+  throw new EventTrackerError(
     `You've called configure function without a configuration object.`
   )
 }

@@ -1,6 +1,6 @@
 import { createDataLayer } from './data-layer'
 import type { EventProperties } from './data-layer-types'
-import { WarningError } from '@/shared/error'
+import { EventTrackerError } from '@/shared/error'
 import { configuration, Configurations } from '@/shared/configuration'
 
 type DataLayerFactory = Partial<{
@@ -68,25 +68,25 @@ it('should throw error if is server side', () => {
 
   removeWindowFromEnvironment()
   const dataLayer = createDataLayer()
-  expect(dataLayer.addEvent).toThrowError(WarningError)
+  expect(dataLayer.addEvent).toThrowError(EventTrackerError)
   restoreWindow()
 })
 
 it('should throw error if targetProperty is not available', () => {
   const { dataLayer } = makeDataLayer({ targetProperty: () => null })
-  expect(dataLayer.addEvent).toThrowError(WarningError)
+  expect(dataLayer.addEvent).toThrowError(EventTrackerError)
 })
 
 it('should throw error if targetProperty is not an array', () => {
   const { dataLayer } = makeDataLayer({ targetProperty: () => ({}) })
-  expect(dataLayer.addEvent).toThrowError(WarningError)
+  expect(dataLayer.addEvent).toThrowError(EventTrackerError)
 })
 
 it('should be able to push event when targetProperty is available', () => {
   const { dataLayer, mockConfiguration } = makeDataLayer({
     targetProperty: () => null,
   })
-  expect(dataLayer.addEvent).toThrowError(WarningError)
+  expect(dataLayer.addEvent).toThrowError(EventTrackerError)
 
   const customTargetProperty: EventProperties[] = []
   mockConfiguration.targetProperty = () => customTargetProperty
