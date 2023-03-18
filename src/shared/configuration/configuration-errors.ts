@@ -1,7 +1,10 @@
 import { EventTrackerError } from '@/shared/error'
 
 export function throwNoConfigurationProvided() {
-  throw new EventTrackerError(
-    `You've called configure function without a configuration object.`
-  )
+  const message =
+    process.env.NODE_ENV === 'production'
+      ? '1'
+      : `You've called configure function without a configuration object.`
+
+  throw new EventTrackerError(message)
 }
