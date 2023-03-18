@@ -38,7 +38,7 @@
     "ts:replace-alias": "tsc-alias --project tsconfig.build.json"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
