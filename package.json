@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "prepare": "husky install",
+    "prepare:publish": "yarn tsx ./scripts/clean-package-json.ts",
     "clean": "rimraf dist* temp coverage *.tsbuildinfo",
-    "prepublish": "yarn tsx ./scripts/clean-package-json.ts",
     "dev": "npm-run-all clean 'build:ts --watch'",
     "build": "npm-run-all clean build:ts build:types",
     "build:ts": "rollup --config rollup.config.mjs",

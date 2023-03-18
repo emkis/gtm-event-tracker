@@ -35,6 +35,9 @@ jobs:
       - name: Produce declaration files
         run: yarn api-report
 
+      - name: Prepare to publish
+        run: yarn prepare:publish
+
       - name: Release
         run: yarn semantic-release
         env:
