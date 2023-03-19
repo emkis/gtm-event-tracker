@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0...v1.8.0) (2023-03-19)
+
+
+### Bug Fixes
+
+* **tracker-context:** remove unsupported for high order functions for setting props ([e2c98f6](https://github.com/emkis/gtm-event-tracker/commit/e2c98f6f1da554abe3388feac74272bd2e4d4d7c))
+
+
+### Features
+
+* **error:** add error code for each error ([75b550a](https://github.com/emkis/gtm-event-tracker/commit/75b550aacfb86ac5e99e57ccfc78caab5573517c))
+* **error:** throw minified error message ([13611dc](https://github.com/emkis/gtm-event-tracker/commit/13611dc4bda559df3ce7bc072f64619bfb89affc))
+* **shared:** throw error code in production ([5304cd8](https://github.com/emkis/gtm-event-tracker/commit/5304cd81dda6180bfbf0ee824634f75ffe571db3))
+
 # [1.7.0](https://github.com/emkis/gtm-event-tracker/compare/v1.6.0...v1.7.0) (2022-11-22)
 
 
