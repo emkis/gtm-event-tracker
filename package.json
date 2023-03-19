@@ -5,7 +5,7 @@
     "email": "nicolasemkis@gmail.com"
   },
   "license": "MIT",
-  "version": "1.8.0",
+  "version": "0.0.0-semantically-released",
   "description": "A tiny, type-safe and zero-dependency solution for triggering Google Tag Manager track events.",
   "keywords": [
     "gtm",
