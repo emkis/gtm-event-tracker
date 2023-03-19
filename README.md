@@ -3,7 +3,7 @@
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/gtm-event-tracker/latest?style=flat&colorA=000&colorB=000&label=bundle%20size "Bundle Size")
 ![Version](https://img.shields.io/npm/v/gtm-event-tracker?style=flat&colorA=000&colorB=000 "Version")
 
-A tiny, type-safe and zero-dependency solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
+A tiny (1.05KB gzip), type-safe and zero-dependency solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
 
 It's designed for applications that need to trigger a lot of track events, and it solves common problems like writing similar events multiple times, managing "global" event properties, and debugging track events. This solution is framework agnostic and configurable, so it's probably the only solution you need for your web application for triggering track events.
 
@@ -469,3 +469,15 @@ configure({
   | debugContext | `boolean` | `false` | Enables logs for context operations. These events are logged when you call `createTrackerContext`, and when you call `setProps` in a created tracker context. |
   | debugAll | `boolean` | `false` | Enables logs for everything, is equivalent of setting all `debug*` options to `true`. |
   | targetProperty | `function` | `() => window.dataLayer` | This is the function that returns the array which the events are going to be pushed into. You should change it if you don't use the default `window.dataLayer`. |
+
+
+## Error codes
+To reduce the amount of data transferred over the network, the full error messages are excluded in the production build of this package. This means in development mode you will be able to see the full error messages when debugging your application, but if you have an error in production, this error will be identified by an error code.
+
+### Available error codes:
+| Code | Message |
+| ---- | ------- |
+| 0 | You've called configure function without a configuration object. |
+| 1 | Triggering events is not possible on server-side. Make sure to only trigger events after your app is running on the client-side. |
+| 2 | The targetProperty is not defined. Make sure you didn't forget to add Google Tag Manager's script in your application. If you did but you don't use the default 'window.dataLayer' array, you can set your custom targetProperty with the configure function. |
+| 3 | The targetProperty is not an array. Either you didn't installed Google Tag Manager correctly or you configured the targetProperty incorrectly. |

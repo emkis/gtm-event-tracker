@@ -34,35 +34,17 @@ export function createTrackerContext(
     return context.value
   }
 
-  function setProps(
-    props:
-      | EventProperties
-      | ((previousProps: EventProperties) => EventProperties)
-  ): void {
-    const updateContextValue = (newProps: EventProperties) => {
-      const updatedProps = { ...newProps }
-      context.value = updatedProps
-    }
-
-    if (typeof props === 'function') {
-      const previousProps = context.value
-      const newProps = props(previousProps)
-      return updateContextValue(newProps)
-    }
-
-    updateContextValue(props)
-  }
-
-  function handleSetProps(props: EventProperties) {
+  function setProps(props: EventProperties) {
     const currentProps = getProps()
-    const newPropsCopy = { ...props }
+    const nextProps = { ...props }
 
     logContextUpdated({
       contextName: context.options.name,
       currentProps,
-      newProps: newPropsCopy,
+      newProps: nextProps,
     })
-    setProps(newPropsCopy)
+
+    context.value = nextProps
   }
 
   logContextCreated({
@@ -70,8 +52,5 @@ export function createTrackerContext(
     properties: getProps(),
   })
 
-  return {
-    context,
-    setProps: handleSetProps,
-  }
+  return { context, setProps }
 }

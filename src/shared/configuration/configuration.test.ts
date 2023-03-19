@@ -1,5 +1,5 @@
 import { createConfiguration } from './configuration'
-import { InvalidConfigurationError } from '@/shared/error'
+import { EventTrackerError } from '@/shared/error'
 import type { Configurations } from './configuration-types'
 
 const defaultConfigurations = {
@@ -45,14 +45,14 @@ it('should throw error if configure is called without arguments', () => {
   // @ts-expect-error I don't want to provide on purpose
   const setNoConfiguration = () => configuration.configure()
 
-  expect(setNoConfiguration).toThrowError(InvalidConfigurationError)
+  expect(setNoConfiguration).toThrowError(EventTrackerError)
   expect(setNoConfiguration).toThrowError(`You've called configure function`)
 })
 
 it('should not throw error if configure is called with an argument', () => {
   const configuration = createConfiguration()
   const setConfiguration = () => configuration.configure({})
-  expect(setConfiguration).not.toThrowError(InvalidConfigurationError)
+  expect(setConfiguration).not.toThrowError(EventTrackerError)
 })
 
 it('should not change any configurations', () => {
