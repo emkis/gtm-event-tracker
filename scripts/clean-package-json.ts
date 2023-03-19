@@ -7,7 +7,6 @@ type PackageProperties = keyof typeof packageJson
 
 const unwantedProperties: PackageProperties[] = [
   'keywords',
-  'files',
   'scripts',
   'devDependencies',
 ]
