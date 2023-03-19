@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/emkis/gtm-event-tracker/compare/v1.8.1...v1.8.2) (2023-03-19)
+
+
+### Bug Fixes
+
+* **npm:** prevent cleaning files field ([56c6046](https://github.com/emkis/gtm-event-tracker/commit/56c604613c4cf2975cbae18047c7e7be3238a303))
+
 ## [1.8.1](https://github.com/emkis/gtm-event-tracker/compare/v1.8.0...v1.8.1) (2023-03-19)
 
 
