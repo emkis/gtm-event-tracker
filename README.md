@@ -3,7 +3,7 @@
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/gtm-event-tracker/latest?style=flat&colorA=000&colorB=000&label=bundle%20size "Bundle Size")
 ![Version](https://img.shields.io/npm/v/gtm-event-tracker?style=flat&colorA=000&colorB=000 "Version")
 
-A tiny (1.05KB gzip), type-safe and zero-dependency solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
+A tiny (1KB gzip), type-safe and zero-dependency solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
 
 It's designed for applications that need to trigger a lot of track events, and it solves common problems like writing similar events multiple times, managing "global" event properties, and debugging track events. This solution is framework agnostic and configurable, so it's probably the only solution you need for your web application for triggering track events.
 
