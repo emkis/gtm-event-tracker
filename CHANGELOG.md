@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/emkis/gtm-event-tracker/compare/v1.8.0...v1.8.1) (2023-03-19)
+
+
+### Bug Fixes
+
+* rollback the erased package.json ([60fc6b7](https://github.com/emkis/gtm-event-tracker/commit/60fc6b72186b0026e2b8fba6e83eff0302c4db13))
+
 # [1.8.0](https://github.com/emkis/gtm-event-tracker/compare/v1.7.0...v1.8.0) (2023-03-19)
 
 
