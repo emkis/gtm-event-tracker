@@ -32,6 +32,7 @@ module.exports = {
       '@semantic-release/git',
       {
         message: 'chore(release): v${nextRelease.version}',
+        assets: ['CHANGELOG.md'],
       },
     ],
     '@semantic-release/github',
