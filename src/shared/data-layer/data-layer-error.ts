@@ -12,7 +12,7 @@ export function throwIsServer() {
 export function throwIsNotDefined() {
   const message =
     process.env.NODE_ENV === 'production'
-      ? '1'
+      ? '2'
       : `The targetProperty is not defined. Make sure you didn't forget to add Google Tag Manager's script in your application. If you did but you don't use the default 'window.dataLayer' array, you can set your custom targetProperty with the configure function.`
 
   throw new EventTrackerError(message)
@@ -21,7 +21,7 @@ export function throwIsNotDefined() {
 export function throwIsNotArray() {
   const message =
     process.env.NODE_ENV === 'production'
-      ? '1'
+      ? '3'
       : `The targetProperty is not an array. Either you didn't installed Google Tag Manager correctly or you configured the targetProperty incorrectly.`
 
   throw new EventTrackerError(message)
