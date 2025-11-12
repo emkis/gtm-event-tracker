@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout to branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Install node ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -37,10 +37,10 @@ jobs:
         node-version: [24.11.1]
     steps:
       - name: Checkout to branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Install node ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
 
