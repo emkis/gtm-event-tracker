@@ -16,7 +16,10 @@
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "types": "dist/gtm-event-tracker.d.ts",
-  "repository": "git@github.com:emkis/gtm-event-tracker.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emkis/gtm-event-tracker.git"
+  },
   "files": [
     "dist/cjs/index.js",
     "dist/es/index.js",
