@@ -14,9 +14,12 @@
     "google-tag-manager",
     "analytics"
   ],
-  "main": "dist/es/index.js",
-  "module": "dist/es/index.js",
-  "types": "dist/gtm-event-tracker.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/gtm-event-tracker.d.ts",
+      "default": "./dist/es/index.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emkis/gtm-event-tracker.git"
