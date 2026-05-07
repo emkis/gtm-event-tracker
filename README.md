@@ -3,6 +3,16 @@
 ![Bundle Size](https://img.shields.io/bundlephobia/minzip/gtm-event-tracker/latest?style=flat&colorA=000&colorB=000&label=bundle%20size "Bundle Size")
 ![Version](https://img.shields.io/npm/v/gtm-event-tracker?style=flat&colorA=000&colorB=000 "Version")
 
+> **This package is no longer maintained.**
+>
+> After years without active development, this project has been archived. It will remain available on npm for existing users, but no new features, bug fixes, or security patches will be released.
+>
+> **Looking for an alternative?**
+> - [`@gtm-support/core`](https://github.com/gtm-support/core) — actively maintained, framework-agnostic, TypeScript-first GTM library
+> - Native `window.dataLayer.push()` — if your needs are simple, GTM's built-in API may be sufficient
+>
+> Thank you to everyone who used and supported this project.
+
 A tiny (1KB gzip), type-safe and zero-dependency solution for triggering [Google Tag Manager](https://tagmanager.google.com) track events.
 
 It's designed for applications that need to trigger a lot of track events, and it solves common problems like writing similar events multiple times, managing "global" event properties, and debugging track events. This solution is framework agnostic and configurable, so it's probably the only solution you need for your web application for triggering track events.
