@@ -8,32 +8,28 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [24.11.1]
-
     steps:
       - name: Checkout to branch
         uses: actions/checkout@v5
-        with:
-          persist-credentials: false
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
 
-      - name: Install node ${{ matrix.node-version }}
+      - name: Install node
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
           cache: 'pnpm'
 
