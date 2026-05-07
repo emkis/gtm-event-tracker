@@ -13,7 +13,7 @@
     "google-tag-manager",
     "analytics"
   ],
-  "main": "dist/cjs/index.js",
+  "main": "dist/es/index.js",
   "module": "dist/es/index.js",
   "types": "dist/gtm-event-tracker.d.ts",
   "repository": {
@@ -21,7 +21,6 @@
     "url": "git+https://github.com/emkis/gtm-event-tracker.git"
   },
   "files": [
-    "dist/cjs/index.js",
     "dist/es/index.js",
     "dist/gtm-event-tracker.d.ts"
   ],
@@ -53,7 +52,6 @@
     "@commitlint/config-conventional": "^17.6.1",
     "@faker-js/faker": "^7.6.0",
     "@microsoft/api-extractor": "^7.34.5",
-    "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-typescript": "^11.1.0",
     "@semantic-release/changelog": "^6.0.3",

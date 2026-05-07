@@ -5,11 +5,7 @@ import { format } from 'prettier'
 
 type PackageProperties = keyof typeof packageJson
 
-const unwantedProperties: PackageProperties[] = [
-  'keywords',
-  'scripts',
-  'devDependencies',
-]
+const unwantedProperties: PackageProperties[] = ['scripts', 'devDependencies']
 
 deleteProperties(unwantedProperties)
 rewritePackageJson()
