@@ -1,3 +1,11 @@
+## [1.8.3](https://github.com/emkis/gtm-event-tracker/compare/v1.8.2...v1.8.3) (2026-05-07)
+
+
+### Bug Fixes
+
+* configure release pipeline for OIDC trusted publishing ([8eb9992](https://github.com/emkis/gtm-event-tracker/commit/8eb9992e645b94214fb498dfedba431de0f9064e))
+* resolve merge conflict with pnpm migration ([3f7a815](https://github.com/emkis/gtm-event-tracker/commit/3f7a8156d1fe18e115ce06e09bb71406c53a042c))
+
 ## [1.8.2](https://github.com/emkis/gtm-event-tracker/compare/v1.8.1...v1.8.2) (2023-03-19)
 
 
