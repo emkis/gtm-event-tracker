@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "prepare:publish": "yarn tsx ./scripts/clean-package-json.ts",
+    "prepare:publish": "pnpm tsx ./scripts/clean-package-json.ts",
     "clean": "rimraf dist* temp coverage *.tsbuildinfo",
     "dev": "npm-run-all clean 'build:ts --watch'",
     "build": "npm-run-all clean build:ts build:types",
@@ -63,6 +63,7 @@
     "@semantic-release/npm": "^13.1.1",
     "@semantic-release/release-notes-generator": "^14.1.0",
     "@types/jest": "^29.5.1",
+    "@types/node": "^25.6.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
     "esbuild": "^0.17.18",
