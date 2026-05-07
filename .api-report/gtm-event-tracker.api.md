@@ -65,7 +65,7 @@ export type TrackModule<CustomEventProperties extends EventProperties> = {
 };
 
 // @public
-export function withTrackerContext<Properties extends EventProperties>({ context, }: TrackerContext): TrackModule<Properties>;
+export function withTrackerContext<Properties extends EventProperties>(input: TrackerContext): TrackModule<Properties>;
 
 // (No @packageDocumentation comment for this package)
 
