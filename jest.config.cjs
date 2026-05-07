@@ -3,7 +3,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   clearMocks: true,
-  setupFiles: ['<rootDir>/jest.setup.js'],
+  setupFiles: ['<rootDir>/jest.setup.cjs'],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(test).[jt]s?(x)'],
   modulePathIgnorePatterns: ['<rootDir>/dist', '<rootDir>/node_modules'],
   moduleNameMapper: {
