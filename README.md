@@ -7,6 +7,9 @@ A tiny (1KB gzip), type-safe and zero-dependency solution for triggering [Google
 
 It's designed for applications that need to trigger a lot of track events, and it solves common problems like writing similar events multiple times, managing "global" event properties, and debugging track events. This solution is framework agnostic and configurable, so it's probably the only solution you need for your web application for triggering track events.
 
+> **This package is no longer maintained.**
+> After years without active development, this project has been archived. It will remain available on npm for existing users, but no new features, bug fixes, or security patches will be released.
+
 
 ## Installation
 It's required you have [Google Tag Manager](https://tagmanager.google.com) installed already in your application because it depends on `window.dataLayer` by default. If you use a different `targetProperty` to push your events, you can use the `configure` function to change this behavior.
