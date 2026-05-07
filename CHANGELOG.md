@@ -1,3 +1,25 @@
+# [2.0.0](https://github.com/emkis/gtm-event-tracker/compare/v1.8.3...v2.0.0) (2026-05-07)
+
+
+* feat!: drop CJS support and fix NPM package metadata ([39428bd](https://github.com/emkis/gtm-event-tracker/commit/39428bdecea54e0a7188ed77a15c9d36cd4089fd))
+
+
+### Bug Fixes
+
+* update jest.setup reference to .cjs extension ([251f2d6](https://github.com/emkis/gtm-event-tracker/commit/251f2d65b37f603b73a0f248a56d89a5919af468))
+
+
+### BREAKING CHANGES
+
+* CommonJS output has been removed. Only ESM is now provided.
+
+- Remove CommonJS output from Rollup build configuration
+- Update package.json main entry to point to ESM distribution
+- Remove @rollup/plugin-commonjs dependency
+- Remove keywords from unwantedProperties in clean-package-json script
+- Simplify files array to only include ESM output and type definitions
+- Approve build scripts for esbuild and unrs-resolver
+
 ## [1.8.3](https://github.com/emkis/gtm-event-tracker/compare/v1.8.2...v1.8.3) (2026-05-07)
 
 
